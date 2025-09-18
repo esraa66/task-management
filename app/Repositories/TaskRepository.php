@@ -4,15 +4,24 @@ namespace App\Repositories;
 
 use App\Models\Task;
 use Illuminate\Database\Eloquent\Collection;
+use App\Repositories\Contracts\TaskRepositoryInterface;
 
-class TaskRepository
+class TaskRepository implements TaskRepositoryInterface
 {
     public function all(array $filters = []): Collection
     {
-        $query = Task::with(['assignedUser', 'creator', 'dependencies']);
+        $query = Task::with(['assignedUser', 'creator', 'dependencies', 'dependents']);
 
         if (isset($filters['status'])) {
             $query->where('status', $filters['status']);
+        }
+
+        if (isset($filters['due_date_from'])) {
+            $query->where('due_date', '>=', $filters['due_date_from']);
+        }
+
+        if (isset($filters['due_date_to'])) {
+            $query->where('due_date', '<=', $filters['due_date_to']);
         }
 
         if (isset($filters['due_date'])) {
@@ -28,7 +37,7 @@ class TaskRepository
 
     public function find(int $id): ?Task
     {
-        return Task::with(['assignedUser', 'creator', 'dependencies'])->find($id);
+        return Task::with(['assignedUser', 'creator', 'dependencies', 'dependents'])->find($id);
     }
 
     public function create(array $data): Task

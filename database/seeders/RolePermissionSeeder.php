@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
@@ -10,35 +9,31 @@ use Spatie\Permission\Models\Permission;
 class RolePermissionSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Run the database seeder.
      */
     public function run(): void
     {
-       
-        $manager = Role::firstOrCreate(
-            ['name' => 'manager', 'guard_name' => 'api']
-        );
-    
-        $user = Role::firstOrCreate(
-            ['name' => 'user', 'guard_name' => 'api']
-        );
-    
+        // Create roles
+        $managerRole = Role::firstOrCreate(['name' => 'manager', 'guard_name' => 'api']);
+        $userRole = Role::firstOrCreate(['name' => 'user', 'guard_name' => 'api']);
+
+        // Create permissions
         $permissions = [
-            'tasks.create',
-            'tasks.update',
-            'tasks.assign',
-            'tasks.view.own',
-            'tasks.update.own.status',
+            'view-any-tasks',
+            'view-task',
+            'create-task',
+            'update-task',
+            'delete-task',
+            'assign-task',
+            'manage-dependencies',
         ];
-    
-        foreach ($permissions as $perm) {
-            Permission::firstOrCreate(
-                ['name' => $perm, 'guard_name' => 'api']
-            );
+
+        foreach ($permissions as $permission) {
+            Permission::firstOrCreate(['name' => $permission, 'guard_name' => 'api']);
         }
-    
-       
-        $manager->givePermissionTo(['tasks.create', 'tasks.update', 'tasks.assign']);
-        $user->givePermissionTo(['tasks.view.own', 'tasks.update.own.status']);
+
+        // Assign permissions to roles
+        $managerRole->givePermissionTo($permissions);
+        $userRole->givePermissionTo(['view-task', 'update-task']);
     }
 }

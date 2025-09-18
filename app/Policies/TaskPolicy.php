@@ -13,7 +13,7 @@ class TaskPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->hasRole('Manager');
+        return true; // Both managers and users can view tasks (filtered in service)
     }
 
     /**
@@ -21,11 +21,11 @@ class TaskPolicy
      */
     public function view(User $user, Task $task): bool
     {
-        if ($user->hasRole('Manager')) {
+        if ($user->hasRole('manager')) {
             return true;
         }
 
-        return $task->assigned_user_id === $user->id;
+        return $task->assigned_to === $user->id;
     }
 
     /**
@@ -33,7 +33,7 @@ class TaskPolicy
      */
     public function create(User $user): bool
     {
-        return $user->hasRole('Manager');
+        return $user->hasRole('manager');
     }
 
     /**
@@ -41,16 +41,19 @@ class TaskPolicy
      */
     public function update(User $user, Task $task): bool
     {
-        return $user->hasRole('Manager');
-    }
-
-    public function updateStatus(User $user, Task $task): bool
-    {
-        if ($user->hasRole('Manager')) {
+        if ($user->hasRole('manager')) {
             return true;
         }
 
-        return $task->assigned_user_id === $user->id;
+        return $task->assigned_to === $user->id;
+    }
+
+    /**
+     * Determine whether the user can manage dependencies.
+     */
+    public function manageDependencies(User $user, Task $task): bool
+    {
+        return $user->hasRole('manager');
     }
 
     /**
@@ -58,7 +61,7 @@ class TaskPolicy
      */
     public function delete(User $user, Task $task): bool
     {
-        return $user->hasRole('Manager');
+        return $user->hasRole('manager');
     }
 
     /**
