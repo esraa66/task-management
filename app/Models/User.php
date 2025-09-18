@@ -6,11 +6,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Tymon\JWTAuth\Contracts\JWTSubject;
+use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable
+class User extends Authenticatable implements JWTSubject
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, HasRoles;
+
+	// Ensure Spatie roles use the same guard as JWT
+	protected string $guard_name = 'api';
 
     /**
      * The attributes that are mass assignable.
@@ -44,5 +49,29 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+	// JWTSubject implementation
+	public function getJWTIdentifier()
+	{
+		return $this->getKey();
+	}
+
+	public function getJWTCustomClaims(): array
+	{
+		return [];
+	}
+
+
+    //Relationships
+    public function createdTasks()
+    {
+        return $this->hasMany(Task::class, 'created_by');
+    }
+
+
+    public function assignedTasks()
+    {
+        return $this->hasMany(Task::class, 'assigned_to');
     }
 }
