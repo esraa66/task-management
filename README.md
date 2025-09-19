@@ -1,61 +1,310 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Task Management API
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A robust RESTful API for task management with role-based access control, built with Laravel 11 and JWT authentication.
 
-## About Laravel
+## Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- **JWT Authentication** - Stateless authentication with token refresh
+- **Role-Based Access Control** - Managers and Users with different permissions
+- **Task Management** - Full CRUD operations with filtering
+- **Task Dependencies** - Prevent task completion until dependencies are met
+- **Input Validation** - Comprehensive request validation
+- **Error Handling** - Consistent API error responses
+- **Rate Limiting** - Built-in protection against abuse
+- **Docker Support** - Ready for containerization
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Requirements
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- PHP 8.2+
+- Composer
+- MySQL 8.0+
+- Redis (optional, for caching)
 
-## Learning Laravel
+## Installation
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Using Composer (Traditional)
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+```bash
+# Clone the repository
+git clone <repository-url>
+cd task-management
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+# Install dependencies
+composer install
 
-## Laravel Sponsors
+# Copy environment file
+cp .env.example .env
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+# Generate application key
+php artisan key:generate
 
-### Premium Partners
+# Generate JWT secret
+php artisan jwt:secret
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+# Run migrations
+php artisan migrate
+
+# Seed the database
+php artisan db:seed
+
+# Start the server
+php artisan serve
+```
+
+### Using Docker
+
+```bash
+# Clone the repository
+git clone <repository-url>
+cd task-management
+
+# Start containers
+docker-compose up -d
+
+# Install dependencies (first time only)
+docker-compose exec app composer install
+
+# Generate application key
+docker-compose exec app php artisan key:generate
+
+# Generate JWT secret
+docker-compose exec app php artisan jwt:secret
+
+# Run migrations
+docker-compose exec app php artisan migrate
+
+# Seed the database
+docker-compose exec app php artisan db:seed
+```
+
+The API will be available at `http://localhost:8000`
+
+## API Documentation
+
+### Authentication
+
+#### Login
+```http
+POST /api/login
+Content-Type: application/json
+
+{
+    "email": "manager@example.com",
+    "password": "password"
+}
+```
+
+**Response:**
+```json
+{
+    "data": {
+        "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...",
+        "token_type": "bearer",
+        "expires_in": 3600
+    },
+    "message": "Login successful"
+}
+```
+
+#### Get Current User
+```http
+GET /api/me
+Authorization: Bearer {token}
+```
+
+#### Logout
+```http
+POST /api/logout
+Authorization: Bearer {token}
+```
+
+#### Refresh Token
+```http
+POST /api/refresh
+Authorization: Bearer {token}
+```
+
+### Tasks
+
+#### List Tasks
+```http
+GET /api/tasks?status=completed&due_date_from=2024-01-01&assigned_to=2
+Authorization: Bearer {token}
+```
+
+**Query Parameters:**
+- `status` - Filter by status (pending, in_progress, completed, cancelled)
+- `due_date_from` - Filter by due date from (YYYY-MM-DD)
+- `due_date_to` - Filter by due date to (YYYY-MM-DD)
+- `due_date` - Filter by exact due date (YYYY-MM-DD)
+- `assigned_to` - Filter by assigned user ID
+
+#### Get Task Details
+```http
+GET /api/tasks/{id}
+Authorization: Bearer {token}
+```
+
+#### Create Task
+```http
+POST /api/tasks
+Authorization: Bearer {token}
+Content-Type: application/json
+
+{
+    "title": "New Task",
+    "description": "Task description",
+    "due_date": "2024-12-31",
+    "assigned_to": 2
+}
+```
+
+#### Update Task
+```http
+PUT /api/tasks/{id}
+Authorization: Bearer {token}
+Content-Type: application/json
+
+{
+    "title": "Updated Task",
+    "description": "Updated description",
+    "status": "in_progress",
+    "due_date": "2024-12-31",
+    "assigned_to": 3
+}
+```
+
+#### Assign Task
+```http
+POST /api/tasks/{id}/assign
+Authorization: Bearer {token}
+Content-Type: application/json
+
+{
+    "user_id": 3
+}
+```
+
+#### Add Dependency
+```http
+POST /api/tasks/{id}/dependencies
+Authorization: Bearer {token}
+Content-Type: application/json
+
+{
+    "dependency_id": 5
+}
+```
+
+#### Remove Dependency
+```http
+DELETE /api/tasks/{id}/dependencies
+Authorization: Bearer {token}
+Content-Type: application/json
+
+{
+    "dependency_id": 5
+}
+```
+
+## Role-Based Access Control
+
+### Manager Permissions
+- ✅ Create, read, update, delete all tasks
+- ✅ Assign tasks to users
+- ✅ Manage task dependencies
+- ✅ View all tasks with filtering
+
+### User Permissions
+- ✅ View only assigned tasks
+- ✅ Update only status of assigned tasks
+- ❌ Cannot complete tasks with incomplete dependencies
+
+## Default Users
+
+The system comes with pre-seeded users:
+
+| Email | Password | Role |
+|-------|----------|------|
+| manager@example.com | password | Manager |
+| user@example.com | password | User |
+| user2@example.com | password | User |
+
+## Error Responses
+
+All error responses follow a consistent format:
+
+```json
+{
+    "message": "Error description",
+    "errors": {
+        "field": ["Validation error message"]
+    }
+}
+```
+
+**Common HTTP Status Codes:**
+- `200` - Success
+- `201` - Created
+- `401` - Unauthorized
+- `403` - Forbidden
+- `404` - Not Found
+- `422` - Validation Error
+- `429` - Too Many Requests
+- `500` - Internal Server Error
+
+## Rate Limiting
+
+- **Login endpoint:** 5 requests per minute
+- **Other endpoints:** 60 requests per minute
+
+## Database Schema
+
+### Tasks Table
+- `id` - Primary key
+- `title` - Task title (required, max 255 chars)
+- `description` - Task description (max 1000 chars)
+- `status` - pending, in_progress, completed, cancelled
+- `due_date` - Due date
+- `assigned_to` - Foreign key to users table
+- `created_by` - Foreign key to users table
+- `created_at`, `updated_at` - Timestamps
+
+### Task Dependencies Table
+- `id` - Primary key
+- `task_id` - Foreign key to tasks table
+- `dependency_task_id` - Foreign key to tasks table
+- `created_at`, `updated_at` - Timestamps
+
+## Testing
+
+```bash
+# Run tests
+php artisan test
+
+# Run tests with coverage
+php artisan test --coverage
+```
+
+## Security Features
+
+- JWT token authentication
+- Role-based access control
+- Input validation and sanitization
+- Rate limiting
+- CORS headers
+- Security headers (XSS protection, content type options)
+- SQL injection protection (Eloquent ORM)
+- CSRF protection (API routes exempt)
 
 ## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests
+5. Submit a pull request
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).

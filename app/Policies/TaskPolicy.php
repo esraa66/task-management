@@ -13,7 +13,7 @@ class TaskPolicy
      */
     public function viewAny(User $user): bool
     {
-        return true; // Both managers and users can view tasks (filtered in service)
+        return true; 
     }
 
     /**
