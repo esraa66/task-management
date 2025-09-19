@@ -8,10 +8,3 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware('auth')->group(function () {
-	Route::get('/tasks', [TaskController::class, 'index']);
-	Route::post('/tasks', [TaskController::class, 'store']);
-	Route::put('/tasks/{task}', [TaskController::class, 'update']);
-	Route::patch('/tasks/{task}', [TaskController::class, 'update']);
-	Route::post('/tasks/{task}/assign', [TaskController::class, 'assign']);
-});

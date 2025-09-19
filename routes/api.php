@@ -5,12 +5,12 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TaskController;
 
     Route::post('/login', [AuthController::class, 'login']);
-    Route::get('/me', [AuthController::class, 'me'])->middleware('auth:api');
-	Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:api');
-    Route::post('/refresh', [AuthController::class, 'refresh'])->middleware('auth:api');
+    Route::get('/me', [AuthController::class, 'me'])->middleware(['auth:api', 'throttle:60,1']);
+	Route::post('/logout', [AuthController::class, 'logout'])->middleware(['auth:api', 'throttle:60,1']);
+    Route::post('/refresh', [AuthController::class, 'refresh'])->middleware(['auth:api', 'throttle:60,1']);
 
 
-Route::middleware('auth:api')->group(function () {
+Route::middleware(['auth:api', 'throttle:60,1'])->group(function () {
 	
 	Route::get('/tasks', [TaskController::class, 'index']);
 	Route::post('/tasks', [TaskController::class, 'store']);
