@@ -1,6 +1,19 @@
 # Task Management API
 
-A robust RESTful API for task management with role-based access control, built with Laravel 11 and JWT authentication.
+A robust RESTful API for task management with role-based access control, built with Laravel 12 and JWT authentication.
+
+
+## Overview
+
+This API allows managers and users to manage tasks with features like:
+
+- Task creation, update
+- Assigning tasks to users
+- Task dependencies (cannot complete tasks until dependencies are completed)
+- Role-based access control (Managers vs Users)
+- Filtering tasks by status, due date, and assignee
+
+---
 
 ## Features
 
@@ -18,7 +31,7 @@ A robust RESTful API for task management with role-based access control, built w
 - PHP 8.2+
 - Composer
 - MySQL 8.0+
-- Redis (optional, for caching)
+
 
 ## Installation
 
@@ -81,144 +94,52 @@ The API will be available at `http://localhost:8000`
 
 ## API Documentation
 
+Postman Collection
+
+Open all endpoints directly via Postman:
+[Postman Collection](<paste-your-postman-collection-link-here>)
+
+
+## Routes & Example Requests
+
 ### Authentication
 
-#### Login
-```http
-POST /api/login
-Content-Type: application/json
+| Method | Endpoint | Example Request | Example Response |
+|--------|----------|----------------|----------------|
+| POST   | `/api/login` | `{ "email": "manager@example.com", "password": "password" }` | `{ "data": { "access_token": "...", "token_type": "bearer", "expires_in": 3600 }, "message": "Login successful" }` |
+| GET    | `/api/me` | `Authorization: Bearer {token}` | `{ "data": { "id": 1, "name": "Manager", "email": "manager@example.com", "role": "Manager" } }` |
+| POST   | `/api/logout` | `Authorization: Bearer {token}` | `{ "message": "Successfully logged out" }` |
+| POST   | `/api/refresh` | `Authorization: Bearer {token}` | `{ "data": { "access_token": "...", "token_type": "bearer", "expires_in": 3600 }, "message": "Token refreshed" }` |
 
-{
-    "email": "manager@example.com",
-    "password": "password"
-}
-```
+---
 
-**Response:**
-```json
-{
-    "data": {
-        "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...",
-        "token_type": "bearer",
-        "expires_in": 3600
-    },
-    "message": "Login successful"
-}
-```
+### Tasks (Requires Authentication)
 
-#### Get Current User
-```http
-GET /api/me
-Authorization: Bearer {token}
-```
+| Method | Endpoint | Example Request | Example Response |
+|--------|----------|----------------|----------------|
+| GET    | `/api/tasks` | `Authorization: Bearer {token}` | `[ { "id": 1, "title": "Task 1", "status": "pending", "assigned_to": 2, "dependencies": [] } ]` |
+| POST   | `/api/tasks` | `{ "title": "New Task", "description": "Task desc", "due_date": "2024-12-31", "assigned_to": 2 }` | `{ "message": "Task created successfully", "data": { "id": 3, "title": "New Task" } }` |
+| GET    | `/api/tasks/{task}` | `Authorization: Bearer {token}` | `{ "id": 3, "title": "New Task", "status": "pending", "assigned_to": 2, "dependencies": [] }` |
+| PUT/PATCH | `/api/tasks/{task}` | `{ "title": "Updated Task", "status": "in_progress" }` | `{ "message": "Task updated successfully", "data": { "id": 3, "title": "Updated Task" } }` |
+| POST   | `/api/tasks/{task}/assign` | `{ "user_id": 3 }` | `{ "message": "Task assigned successfully" }` |
+| POST   | `/api/tasks/{task}/dependencies` | `{ "dependency_id": 5 }` | `{ "message": "Dependency added successfully" }` |
+| DELETE | `/api/tasks/{task}/dependencies` | `{ "dependency_id": 5 }` | `{ "message": "Dependency removed successfully" }` |
 
-#### Logout
-```http
-POST /api/logout
-Authorization: Bearer {token}
-```
 
-#### Refresh Token
-```http
-POST /api/refresh
-Authorization: Bearer {token}
-```
 
-### Tasks
-
-#### List Tasks
-```http
-GET /api/tasks?status=completed&due_date_from=2024-01-01&assigned_to=2
-Authorization: Bearer {token}
-```
-
-**Query Parameters:**
-- `status` - Filter by status (pending, in_progress, completed, cancelled)
-- `due_date_from` - Filter by due date from (YYYY-MM-DD)
-- `due_date_to` - Filter by due date to (YYYY-MM-DD)
-- `due_date` - Filter by exact due date (YYYY-MM-DD)
-- `assigned_to` - Filter by assigned user ID
-
-#### Get Task Details
-```http
-GET /api/tasks/{id}
-Authorization: Bearer {token}
-```
-
-#### Create Task
-```http
-POST /api/tasks
-Authorization: Bearer {token}
-Content-Type: application/json
-
-{
-    "title": "New Task",
-    "description": "Task description",
-    "due_date": "2024-12-31",
-    "assigned_to": 2
-}
-```
-
-#### Update Task
-```http
-PUT /api/tasks/{id}
-Authorization: Bearer {token}
-Content-Type: application/json
-
-{
-    "title": "Updated Task",
-    "description": "Updated description",
-    "status": "in_progress",
-    "due_date": "2024-12-31",
-    "assigned_to": 3
-}
-```
-
-#### Assign Task
-```http
-POST /api/tasks/{id}/assign
-Authorization: Bearer {token}
-Content-Type: application/json
-
-{
-    "user_id": 3
-}
-```
-
-#### Add Dependency
-```http
-POST /api/tasks/{id}/dependencies
-Authorization: Bearer {token}
-Content-Type: application/json
-
-{
-    "dependency_id": 5
-}
-```
-
-#### Remove Dependency
-```http
-DELETE /api/tasks/{id}/dependencies
-Authorization: Bearer {token}
-Content-Type: application/json
-
-{
-    "dependency_id": 5
-}
-```
 
 ## Role-Based Access Control
 
 ### Manager Permissions
-- ✅ Create, read, update, delete all tasks
-- ✅ Assign tasks to users
-- ✅ Manage task dependencies
-- ✅ View all tasks with filtering
+-  Create, read, update all tasks
+-  Assign tasks to users
+-  Manage task dependencies
+-  View all tasks with filtering
 
 ### User Permissions
-- ✅ View only assigned tasks
-- ✅ Update only status of assigned tasks
-- ❌ Cannot complete tasks with incomplete dependencies
+-  View only assigned tasks
+-  Update only status of assigned tasks
+-  Cannot complete tasks with incomplete dependencies
 
 ## Default Users
 
@@ -229,6 +150,32 @@ The system comes with pre-seeded users:
 | manager@example.com | password | Manager |
 | user@example.com | password | User |
 | user2@example.com | password | User |
+
+
+## Database Schema & ERD
+
+### Tasks Table
+- `id` - Primary key
+- `title` - Task title (required, max 255 chars)
+- `description` - Task description (max 1000 chars)
+- `status` - pending, in_progress, completed, cancelled
+- `due_date` - Due date
+- `assigned_to` - Foreign key to users table
+- `created_by` - Foreign key to users table
+- `created_at`, `updated_at` - Timestamps
+
+### Task Dependencies Table
+- `id` - Primary key
+- `task_id` - Foreign key to tasks table
+- `dependency_task_id` - Foreign key to tasks table
+- `created_at`, `updated_at` - Timestamps
+
+Purpose: Enforces task dependencies, preventing completion until all dependencies are completed.
+
+ERD
+
+(./public/ERD.png)
+
 
 ## Error Responses
 
@@ -258,23 +205,6 @@ All error responses follow a consistent format:
 - **Login endpoint:** 5 requests per minute
 - **Other endpoints:** 60 requests per minute
 
-## Database Schema
-
-### Tasks Table
-- `id` - Primary key
-- `title` - Task title (required, max 255 chars)
-- `description` - Task description (max 1000 chars)
-- `status` - pending, in_progress, completed, cancelled
-- `due_date` - Due date
-- `assigned_to` - Foreign key to users table
-- `created_by` - Foreign key to users table
-- `created_at`, `updated_at` - Timestamps
-
-### Task Dependencies Table
-- `id` - Primary key
-- `task_id` - Foreign key to tasks table
-- `dependency_task_id` - Foreign key to tasks table
-- `created_at`, `updated_at` - Timestamps
 
 ## Testing
 
