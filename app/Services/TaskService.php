@@ -155,9 +155,10 @@ class TaskService
     private function validateDependenciesCompleted(Task $task): void
     {
         $incomplete = $task->dependencies()
-            ->where('status', '!=', 'completed')
-            ->pluck('id')
+            ->where('tasks.status', '!=', 'completed')
+            ->pluck('tasks.id')
             ->toArray();
+
 
         if (!empty($incomplete)) {
             throw ValidationException::withMessages([

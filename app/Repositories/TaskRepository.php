@@ -5,10 +5,12 @@ namespace App\Repositories;
 use App\Models\Task;
 use Illuminate\Database\Eloquent\Collection;
 use App\Repositories\Contracts\TaskRepositoryInterface;
+use Illuminate\Pagination\LengthAwarePaginator;
+
 
 class TaskRepository implements TaskRepositoryInterface
 {
-    public function all(array $filters = []): Collection
+    public function all(array $filters = [], int $perPage = 10): LengthAwarePaginator
     {
         $query = Task::with(['assignedUser', 'creator', 'dependencies', 'dependents']);
 
@@ -32,7 +34,8 @@ class TaskRepository implements TaskRepositoryInterface
             $query->where('assigned_to', $filters['assigned_to']);
         }
 
-        return $query->get();
+      
+        return $query->paginate($perPage);
     }
 
     public function find(int $id): ?Task
