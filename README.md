@@ -96,8 +96,7 @@ The API will be available at `http://localhost:8000`
 
 Postman Collection
 
-Open all endpoints directly via Postman:
-[Postman Collection](<paste-your-postman-collection-link-here>)
+Open all endpoints directly via Postman: [Postman Collection](https://documenter.getpostman.com/view/27854125/2sB3HtFGYx)
 
 
 ## Routes & Example Requests
@@ -174,7 +173,7 @@ Purpose: Enforces task dependencies, preventing completion until all dependencie
 
 ERD
 
-(./public/ERD.png)
+![ERD](./resources/docs/ERD.png)
 
 
 ## Error Responses

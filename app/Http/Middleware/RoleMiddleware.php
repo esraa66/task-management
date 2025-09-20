@@ -2,12 +2,14 @@
 
 namespace App\Http\Middleware;
 
+use App\Traits\ApiResponse;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class RoleMiddleware
 {
+    use ApiResponse;
     /**
      * Handle an incoming request.
      *
@@ -16,9 +18,7 @@ class RoleMiddleware
     public function handle(Request $request, Closure $next, string $role): Response
     {
         if (! $request->user() || ! $request->user()->hasRole($role)) {
-            return response()->json([
-                'message' => 'Forbidden: You do not have permission.'
-            ], 403);
+            return $this->error('Forbidden: You do not have permission.', 403);
         }
 
         return $next($request);

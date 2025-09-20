@@ -17,9 +17,7 @@ class AuthController extends Controller
         $credentials = $request->only(['email', 'password']);
 
         if (! $token = auth()->attempt($credentials)) {
-            return response()->json([
-                'message' => 'Invalid credentials'
-            ], 401);
+            return $this->error('Invalid credentials', 401);
         }
 
         return $this->respondWithToken($token);
@@ -27,18 +25,14 @@ class AuthController extends Controller
 
     public function me()
     {
-        return response()->json([
-            'data' => auth()->user()
-        ]);
+        return $this->success(auth()->user(), 'User profile retrieved successfully');
     }
 
     public function logout()
     {
         auth()->logout();
 
-        return response()->json([
-            'message' => 'Successfully logged out'
-        ]);
+        return $this->success(null, 'Successfully logged out');
     }
 
 	public function refresh()
@@ -48,14 +42,13 @@ class AuthController extends Controller
 
     protected function respondWithToken($token)
     {
-        return response()->json([
-            'data' => [
-                'access_token' => $token,
-                'token_type' => 'bearer',
-                'expires_in' => auth()->factory()->getTTL() * 60
-            ],
-            'message' => 'Login successful'
-        ]);
+        $tokenData = [
+            'access_token' => $token,
+            'token_type' => 'bearer',
+            'expires_in' => auth()->factory()->getTTL() * 60
+        ];
+
+        return $this->success($tokenData, 'Login successful');
     }
 
 }
