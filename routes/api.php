@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\UserController;
 
     Route::post('/login', [AuthController::class, 'login'])->middleware('throttle:5,1');
     Route::get('/me', [AuthController::class, 'me'])->middleware(['auth:api', 'throttle:60,1']);
@@ -20,6 +21,9 @@ Route::middleware(['auth:api', 'throttle:60,1'])->group(function () {
 	Route::post('/tasks/{task}/assign', [TaskController::class, 'assign']);
 	Route::post('/tasks/{task}/dependencies', [TaskController::class, 'addDependency']);
 	Route::delete('/tasks/{task}/dependencies', [TaskController::class, 'removeDependency']);
+	Route::get('/users', [UserController::class, 'indexUsers'])->middleware('role:manager');
 });
+
+
 
 

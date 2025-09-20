@@ -27,13 +27,7 @@ class TaskController extends Controller
         $filters = $request->only(['status', 'due_date_from', 'due_date_to', 'due_date', 'assigned_to']);
         $tasks = $this->service->listTasks($filters);
 
-        return response()->json([
-            'data' => $tasks,
-            'meta' => [
-                'total' => $tasks->count(),
-                'filters' => $filters
-            ]
-        ]);
+        return $this->success($tasks, 'Tasks retrieved successfully');
     }
 
     public function show(Task $task)
@@ -42,9 +36,7 @@ class TaskController extends Controller
 
         $taskDetails = $this->service->getTask($task->id);
 
-        return response()->json([
-            'data' => $taskDetails
-        ]);
+        return $this->success($taskDetails, 'Task details retrieved successfully');
     }
 
     public function store(StoreTaskRequest $request)
@@ -53,10 +45,7 @@ class TaskController extends Controller
 
         $task = $this->service->createTask($request->validated());
 
-        return response()->json([
-            'data' => $task,
-            'message' => 'Task created successfully'
-        ], 201);
+        return $this->success($task, 'Task created successfully', 201);
     }
 
     public function update(UpdateTaskRequest $request, Task $task)
@@ -72,10 +61,7 @@ class TaskController extends Controller
             default     => 'Task status updated.',
         };
 
-        return response()->json([
-            'data' => $task,
-            'message' => $statusMessage
-        ]);
+        return $this->success($task, $statusMessage);
     }
 
     public function assign(AssignTaskRequest $request, Task $task)
@@ -84,10 +70,7 @@ class TaskController extends Controller
 
         $task = $this->service->assignTask($task, $request->validated()['user_id']);
 
-        return response()->json([
-            'data' => $task,
-            'message' => 'Task assigned successfully'
-        ]);
+        return $this->success($task, 'Task assigned successfully');
     }
 
     public function addDependency(Request $request, Task $task)
@@ -100,10 +83,7 @@ class TaskController extends Controller
 
         $task = $this->service->addDependency($task, $request->dependency_id);
 
-        return response()->json([
-            'data' => $task,
-            'message' => 'Dependency added successfully'
-        ]);
+        return $this->success($task, 'Dependency added successfully');
     }
 
     public function removeDependency(Request $request, Task $task)
@@ -116,9 +96,6 @@ class TaskController extends Controller
 
         $task = $this->service->removeDependency($task, $request->dependency_id);
 
-        return response()->json([
-            'data' => $task,
-            'message' => 'Dependency removed successfully'
-        ]);
+        return $this->success($task, 'Dependency removed successfully');
     }
 }
