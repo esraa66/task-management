@@ -65,9 +65,16 @@ class TaskController extends Controller
 
         $task = $this->service->updateTask($task, $request->validated());
 
+        $statusMessage = match ($task->status) {
+            'pending'   => 'Task marked as pending.',
+            'in_progress' => 'Task is now in progress.',
+            'completed' => 'Task completed successfully.',
+            default     => 'Task status updated.',
+        };
+
         return response()->json([
             'data' => $task,
-            'message' => 'Task updated successfully'
+            'message' => $statusMessage
         ]);
     }
 

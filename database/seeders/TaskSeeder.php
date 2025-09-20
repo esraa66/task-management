@@ -2,39 +2,43 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Task;
-use Database\Factories\TaskFactory;
-
 
 class TaskSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
-    public function run()
+    public function run(): void
     {
-        $users = User::all();
-        if ($users->count() == 0) return; 
+        $managers = User::role('manager')->get();
+        $regularUsers = User::role('user')->get();
 
-    
-        $tasks = Task::factory()->count(10)->make()->each(function ($task) use ($users) {
-            $task->created_by = $users->random()->id;
-            $task->assigned_to = $users->random()->id;
-            $task->status = 'pending'; 
-            $task->save();
-        });
+        if ($managers->isEmpty() || $regularUsers->isEmpty()) {
+            $this->command->warn(' No managers or users found. Please seed users first.');
+            return;
+        }
 
         
-        $tasksArray = $tasks->all();
-        foreach ($tasksArray as $task) {
-            $dependencies = collect($tasksArray)
-                ->where('id', '!=', $task->id) 
-                ->random(rand(0, 3)); 
+        $tasks = collect();
+        foreach (range(1, 10) as $i) {
+            $tasks->push(Task::factory()->create([
+                'created_by'   => $managers->random()->id,
+                'assigned_to'  => $regularUsers->random()->id,
+                'status'       => 'pending',
+            ]));
+        }
+
+       
+        foreach ($tasks as $task) {
+            $dependencies = $tasks->where('id', '!=', $task->id)->random(rand(0, 3));
             foreach ($dependencies as $dep) {
-                $task->dependencies()->attach($dep->id);
+              
+                if (!$task->dependencies->contains($dep->id)) {
+                    $task->dependencies()->attach($dep->id);
+                }
             }
         }
     }

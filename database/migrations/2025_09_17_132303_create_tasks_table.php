@@ -25,6 +25,10 @@ return new class extends Migration
                   ->cascadeOnDelete();
 
             $table->timestamps();
+
+            $table->index('status');
+            $table->index('due_date');
+            $table->index('assigned_to');
         });
     }
 
