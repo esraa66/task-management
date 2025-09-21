@@ -97,7 +97,8 @@ The API will be available at `http://localhost:8000`
 Postman Collection
 
 - Open all endpoints directly via Postman: [Postman Collection](https://documenter.getpostman.com/view/27854125/2sB3HtFGYx)
-- Or download the collection file: [`resources/docs/Task Management.postman_collection.json`](resources/docs/Task Management.postman_collection.json)
+- Or download the collection file: [Task Management.postman_collection.json](resources/docs/Task%20Management.postman_collection.json)
+
 
 
 ## Routes & Example Requests
