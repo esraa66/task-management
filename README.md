@@ -234,17 +234,7 @@ All API responses in this project follow a consistent JSON structure using the `
 - **Other endpoints:** 60 requests per minute
 
 
-## Testing
 
-This project uses Laravel’s built-in testing framework with PHPUnit. Tests cover authentication, task management, and role-based access control.
-
-```bash
-# Run tests
-php artisan test
-
-# Run tests with coverage
-php artisan test --coverage
-```
 
 ## Security Features
 
