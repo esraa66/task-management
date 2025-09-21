@@ -127,6 +127,14 @@ Postman Collection
 | DELETE | `/api/tasks/{task}/dependencies` | `{ "dependency_id": 5 }` | `{ "message": "Dependency removed successfully" }` |
 
 
+---
+
+### Users (Accessible by Managers only)
+
+| Method | Endpoint   | Example Request | Example Response |
+|--------|------------|-----------------|-----------------|
+| GET    | `/api/users` | `Authorization: Bearer {token}` | `[ { "id": 2, "name": "User", "email": "user@example.com", "role": "User" } ]` |
+
 
 
 ## Role-Based Access Control
