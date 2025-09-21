@@ -96,7 +96,8 @@ The API will be available at `http://localhost:8000`
 
 Postman Collection
 
-Open all endpoints directly via Postman: [Postman Collection](https://documenter.getpostman.com/view/27854125/2sB3HtFGYx)
+- Open all endpoints directly via Postman: [Postman Collection](https://documenter.getpostman.com/view/27854125/2sB3HtFGYx)
+- Or download the collection file: [`resources/docs/Task Management.postman_collection.json`](resources/docs/Task Management.postman_collection.json)
 
 
 ## Routes & Example Requests
@@ -176,16 +177,35 @@ ERD
 ![ERD](./resources/docs/ERD.png)
 
 
-## Error Responses
+## API Response Format
 
-All error responses follow a consistent format:
+All API responses in this project follow a consistent JSON structure using the `ApiResponse` trait.
 
+###  Success Response
 ```json
 {
-    "message": "Error description",
-    "errors": {
-        "field": ["Validation error message"]
-    }
+  "success": true,
+  "status_code": 200,
+  "message": "Task retrieved successfully",
+  "data": {
+    "id": 1,
+    "title": "Sample task",
+    "status": "pending"
+  },
+  "errors": null
+}
+```
+
+###  Error Response
+```json
+{
+  "success": false,
+  "status_code": 422,
+  "message": "Validation failed",
+  "data": null,
+  "errors": {
+    "title": ["The title field is required."]
+  }
 }
 ```
 
@@ -206,6 +226,8 @@ All error responses follow a consistent format:
 
 
 ## Testing
+
+This project uses Laravel’s built-in testing framework with PHPUnit. Tests cover authentication, task management, and role-based access control.
 
 ```bash
 # Run tests
