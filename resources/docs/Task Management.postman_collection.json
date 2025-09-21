@@ -1,0 +1,2475 @@
+{
+	"info": {
+		"_postman_id": "652bda6e-19dc-44b9-9db1-8e5ce4d1a8ec",
+		"name": "Task Management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27854125"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "user@example.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "manager@example.com",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "user@example.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "password",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 20 Sep 2025 20:19:53 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "5"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "4"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"status_code\": 200,\n    \"message\": \"Login successful\",\n    \"data\": {\n        \"access_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzU4Mzk5NTkyLCJleHAiOjE3NTg0MDMxOTIsIm5iZiI6MTc1ODM5OTU5MiwianRpIjoiMHU2d2wxWGViQndTQ2M4QSIsInN1YiI6IjIiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.y0qQEqa6F-BVXYiVYtQuFgdqvARM4OZ27uM0AIrsDu0\",\n        \"token_type\": \"bearer\",\n        \"expires_in\": 3600\n    },\n    \"errors\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/logout",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"logout"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Logout",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/logout",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"logout"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 20 Sep 2025 20:22:30 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"status_code\": 200,\n    \"message\": \"Successfully logged out\",\n    \"data\": null,\n    \"errors\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Me",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/me",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"me"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Me",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/me",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"me"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 20 Sep 2025 20:21:10 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"status_code\": 200,\n    \"message\": \"User profile retrieved successfully\",\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"Manager One\",\n        \"email\": \"manager@example.com\",\n        \"email_verified_at\": null,\n        \"created_at\": \"2025-09-20T13:01:12.000000Z\",\n        \"updated_at\": \"2025-09-20T13:01:12.000000Z\"\n    },\n    \"errors\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Refresh",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/refresh",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"refresh"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Refresh",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/refresh",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"refresh"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 20 Sep 2025 20:21:49 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"status_code\": 200,\n    \"message\": \"Login successful\",\n    \"data\": {\n        \"access_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3JlZnJlc2giLCJpYXQiOjE3NTgzOTk2NDYsImV4cCI6MTc1ODQwMzMwOSwibmJmIjoxNzU4Mzk5NzA5LCJqdGkiOiIxOE5wRXJQNno1ODV3NmFjIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.0E7AfAlrcZlzf6sF-kFNUa8uVWyjT3ycX4hybpgmQNo\",\n        \"token_type\": \"bearer\",\n        \"expires_in\": 3600\n    },\n    \"errors\": null\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Tasks",
+			"item": [
+				{
+					"name": "All Tasks",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/tasks?due_date_from=2025-09-20&due_date_to=2025-09-26",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"tasks"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "in_progress",
+									"disabled": true
+								},
+								{
+									"key": "due_date_from",
+									"value": "2025-09-20"
+								},
+								{
+									"key": "due_date_to",
+									"value": "2025-09-26"
+								},
+								{
+									"key": "assigned_to",
+									"value": "3",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "All Tasks (manager)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/tasks",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"tasks"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "pending",
+											"disabled": true
+										},
+										{
+											"key": "due_date_from",
+											"value": "2025-09-20",
+											"disabled": true
+										},
+										{
+											"key": "due_date_to",
+											"value": "2025-09-26",
+											"disabled": true
+										},
+										{
+											"key": "assigned_to",
+											"value": "3",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 20 Sep 2025 20:27:40 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"status_code\": 200,\n    \"message\": \"Tasks retrieved successfully\",\n    \"data\": {\n        \"current_page\": 1,\n        \"data\": [\n            {\n                \"id\": 1,\n                \"title\": \"Vero dolorum alias iste assumenda.\",\n                \"description\": \"Et architecto cumque reprehenderit optio doloribus. Eveniet voluptas nihil molestiae adipisci rerum. Quis quis natus consequuntur qui alias sit ipsa.\",\n                \"status\": \"pending\",\n                \"due_date\": \"2025-10-04\",\n                \"assigned_to\": 2,\n                \"created_by\": 1,\n                \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"assigned_user\": {\n                    \"id\": 2,\n                    \"name\": \"User One\",\n                    \"email\": \"user@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:12.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:12.000000Z\"\n                },\n                \"creator\": {\n                    \"id\": 1,\n                    \"name\": \"Manager One\",\n                    \"email\": \"manager@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:12.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:12.000000Z\"\n                },\n                \"dependencies\": [\n                    {\n                        \"id\": 7,\n                        \"title\": \"Esse qui nostrum necessitatibus quam culpa placeat ut.\",\n                        \"description\": \"Repellendus et adipisci sit eius qui. Quo necessitatibus eius illum hic ea impedit ea. Inventore vitae et et ipsa sint. Magni in aut quia ut.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-09-26\",\n                        \"assigned_to\": 3,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"task_id\": 1,\n                            \"dependency_task_id\": 7\n                        }\n                    }\n                ],\n                \"dependents\": []\n            },\n            {\n                \"id\": 2,\n                \"title\": \"Laboriosam repudiandae autem quasi eos aspernatur aut.\",\n                \"description\": \"Possimus quos aspernatur voluptatem et hic omnis ut nostrum. Aut cupiditate saepe in et. Provident labore iusto quia voluptate aut eveniet.\",\n                \"status\": \"pending\",\n                \"due_date\": \"2025-09-25\",\n                \"assigned_to\": 2,\n                \"created_by\": 1,\n                \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"assigned_user\": {\n                    \"id\": 2,\n                    \"name\": \"User One\",\n                    \"email\": \"user@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:12.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:12.000000Z\"\n                },\n                \"creator\": {\n                    \"id\": 1,\n                    \"name\": \"Manager One\",\n                    \"email\": \"manager@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:12.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:12.000000Z\"\n                },\n                \"dependencies\": [\n                    {\n                        \"id\": 4,\n                        \"title\": \"Expedita non rem quibusdam enim nobis non amet.\",\n                        \"description\": \"Recusandae corrupti laboriosam perspiciatis quo voluptatum dolorum. Maiores est doloremque consequatur id modi. Ea occaecati minima vero nihil.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-10-01\",\n                        \"assigned_to\": 2,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"task_id\": 2,\n                            \"dependency_task_id\": 4\n                        }\n                    },\n                    {\n                        \"id\": 6,\n                        \"title\": \"Id ea earum aut occaecati autem commodi explicabo.\",\n                        \"description\": \"Dolorem aut sunt et necessitatibus expedita voluptatem laboriosam. Saepe qui aut et repellat non officiis amet. Rerum voluptas quam eum hic. Voluptatem repudiandae excepturi architecto odio ab qui. Quia adipisci et illum sit natus eligendi pariatur.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-10-15\",\n                        \"assigned_to\": 2,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"task_id\": 2,\n                            \"dependency_task_id\": 6\n                        }\n                    }\n                ],\n                \"dependents\": [\n                    {\n                        \"id\": 7,\n                        \"title\": \"Esse qui nostrum necessitatibus quam culpa placeat ut.\",\n                        \"description\": \"Repellendus et adipisci sit eius qui. Quo necessitatibus eius illum hic ea impedit ea. Inventore vitae et et ipsa sint. Magni in aut quia ut.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-09-26\",\n                        \"assigned_to\": 3,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"dependency_task_id\": 2,\n                            \"task_id\": 7\n                        }\n                    }\n                ]\n            },\n            {\n                \"id\": 3,\n                \"title\": \"Veritatis odit ratione sint labore.\",\n                \"description\": \"Voluptatem nisi est sequi placeat corporis. Iusto minima commodi nihil est nesciunt. Sint in quia maxime non architecto. Saepe quia quis repudiandae ratione mollitia qui natus. Quibusdam laborum vel ea ut qui sed eum.\",\n                \"status\": \"pending\",\n                \"due_date\": \"2025-10-10\",\n                \"assigned_to\": 3,\n                \"created_by\": 1,\n                \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"assigned_user\": {\n                    \"id\": 3,\n                    \"name\": \"User Two\",\n                    \"email\": \"user2@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:13.000000Z\"\n                },\n                \"creator\": {\n                    \"id\": 1,\n                    \"name\": \"Manager One\",\n                    \"email\": \"manager@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:12.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:12.000000Z\"\n                },\n                \"dependencies\": [\n                    {\n                        \"id\": 9,\n                        \"title\": \"Error officia quia veniam alias consequuntur quia ab consequatur.\",\n                        \"description\": \"Et temporibus explicabo est beatae cum. Officia quibusdam placeat dicta sit et. Distinctio animi esse harum ipsum illo. Dolorem voluptas inventore voluptas porro ipsam consequuntur.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-10-14\",\n                        \"assigned_to\": 3,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"task_id\": 3,\n                            \"dependency_task_id\": 9\n                        }\n                    },\n                    {\n                        \"id\": 10,\n                        \"title\": \"Excepturi repellendus quos illum ullam.\",\n                        \"description\": \"Qui vel aut qui ut commodi vero numquam. Magnam quis architecto minima vel dolore temporibus odit adipisci. In accusantium non sint error voluptatum accusantium.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-10-08\",\n                        \"assigned_to\": 2,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"task_id\": 3,\n                            \"dependency_task_id\": 10\n                        }\n                    }\n                ],\n                \"dependents\": [\n                    {\n                        \"id\": 5,\n                        \"title\": \"Alias quis voluptate est et totam libero labore.\",\n                        \"description\": \"Nesciunt molestias eum culpa alias et praesentium doloremque. Omnis ut quia qui.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-09-27\",\n                        \"assigned_to\": 3,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"dependency_task_id\": 3,\n                            \"task_id\": 5\n                        }\n                    }\n                ]\n            },\n            {\n                \"id\": 4,\n                \"title\": \"Expedita non rem quibusdam enim nobis non amet.\",\n                \"description\": \"Recusandae corrupti laboriosam perspiciatis quo voluptatum dolorum. Maiores est doloremque consequatur id modi. Ea occaecati minima vero nihil.\",\n                \"status\": \"pending\",\n                \"due_date\": \"2025-10-01\",\n                \"assigned_to\": 2,\n                \"created_by\": 1,\n                \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"assigned_user\": {\n                    \"id\": 2,\n                    \"name\": \"User One\",\n                    \"email\": \"user@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:12.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:12.000000Z\"\n                },\n                \"creator\": {\n                    \"id\": 1,\n                    \"name\": \"Manager One\",\n                    \"email\": \"manager@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:12.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:12.000000Z\"\n                },\n                \"dependencies\": [],\n                \"dependents\": [\n                    {\n                        \"id\": 2,\n                        \"title\": \"Laboriosam repudiandae autem quasi eos aspernatur aut.\",\n                        \"description\": \"Possimus quos aspernatur voluptatem et hic omnis ut nostrum. Aut cupiditate saepe in et. Provident labore iusto quia voluptate aut eveniet.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-09-25\",\n                        \"assigned_to\": 2,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"dependency_task_id\": 4,\n                            \"task_id\": 2\n                        }\n                    }\n                ]\n            },\n            {\n                \"id\": 5,\n                \"title\": \"Alias quis voluptate est et totam libero labore.\",\n                \"description\": \"Nesciunt molestias eum culpa alias et praesentium doloremque. Omnis ut quia qui.\",\n                \"status\": \"pending\",\n                \"due_date\": \"2025-09-27\",\n                \"assigned_to\": 3,\n                \"created_by\": 1,\n                \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"assigned_user\": {\n                    \"id\": 3,\n                    \"name\": \"User Two\",\n                    \"email\": \"user2@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:13.000000Z\"\n                },\n                \"creator\": {\n                    \"id\": 1,\n                    \"name\": \"Manager One\",\n                    \"email\": \"manager@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:12.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:12.000000Z\"\n                },\n                \"dependencies\": [\n                    {\n                        \"id\": 3,\n                        \"title\": \"Veritatis odit ratione sint labore.\",\n                        \"description\": \"Voluptatem nisi est sequi placeat corporis. Iusto minima commodi nihil est nesciunt. Sint in quia maxime non architecto. Saepe quia quis repudiandae ratione mollitia qui natus. Quibusdam laborum vel ea ut qui sed eum.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-10-10\",\n                        \"assigned_to\": 3,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"task_id\": 5,\n                            \"dependency_task_id\": 3\n                        }\n                    }\n                ],\n                \"dependents\": []\n            },\n            {\n                \"id\": 6,\n                \"title\": \"Id ea earum aut occaecati autem commodi explicabo.\",\n                \"description\": \"Dolorem aut sunt et necessitatibus expedita voluptatem laboriosam. Saepe qui aut et repellat non officiis amet. Rerum voluptas quam eum hic. Voluptatem repudiandae excepturi architecto odio ab qui. Quia adipisci et illum sit natus eligendi pariatur.\",\n                \"status\": \"pending\",\n                \"due_date\": \"2025-10-15\",\n                \"assigned_to\": 2,\n                \"created_by\": 1,\n                \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"assigned_user\": {\n                    \"id\": 2,\n                    \"name\": \"User One\",\n                    \"email\": \"user@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:12.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:12.000000Z\"\n                },\n                \"creator\": {\n                    \"id\": 1,\n                    \"name\": \"Manager One\",\n                    \"email\": \"manager@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:12.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:12.000000Z\"\n                },\n                \"dependencies\": [\n                    {\n                        \"id\": 10,\n                        \"title\": \"Excepturi repellendus quos illum ullam.\",\n                        \"description\": \"Qui vel aut qui ut commodi vero numquam. Magnam quis architecto minima vel dolore temporibus odit adipisci. In accusantium non sint error voluptatum accusantium.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-10-08\",\n                        \"assigned_to\": 2,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"task_id\": 6,\n                            \"dependency_task_id\": 10\n                        }\n                    }\n                ],\n                \"dependents\": [\n                    {\n                        \"id\": 2,\n                        \"title\": \"Laboriosam repudiandae autem quasi eos aspernatur aut.\",\n                        \"description\": \"Possimus quos aspernatur voluptatem et hic omnis ut nostrum. Aut cupiditate saepe in et. Provident labore iusto quia voluptate aut eveniet.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-09-25\",\n                        \"assigned_to\": 2,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"dependency_task_id\": 6,\n                            \"task_id\": 2\n                        }\n                    }\n                ]\n            },\n            {\n                \"id\": 7,\n                \"title\": \"Esse qui nostrum necessitatibus quam culpa placeat ut.\",\n                \"description\": \"Repellendus et adipisci sit eius qui. Quo necessitatibus eius illum hic ea impedit ea. Inventore vitae et et ipsa sint. Magni in aut quia ut.\",\n                \"status\": \"pending\",\n                \"due_date\": \"2025-09-26\",\n                \"assigned_to\": 3,\n                \"created_by\": 1,\n                \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"assigned_user\": {\n                    \"id\": 3,\n                    \"name\": \"User Two\",\n                    \"email\": \"user2@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:13.000000Z\"\n                },\n                \"creator\": {\n                    \"id\": 1,\n                    \"name\": \"Manager One\",\n                    \"email\": \"manager@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:12.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:12.000000Z\"\n                },\n                \"dependencies\": [\n                    {\n                        \"id\": 2,\n                        \"title\": \"Laboriosam repudiandae autem quasi eos aspernatur aut.\",\n                        \"description\": \"Possimus quos aspernatur voluptatem et hic omnis ut nostrum. Aut cupiditate saepe in et. Provident labore iusto quia voluptate aut eveniet.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-09-25\",\n                        \"assigned_to\": 2,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"task_id\": 7,\n                            \"dependency_task_id\": 2\n                        }\n                    }\n                ],\n                \"dependents\": [\n                    {\n                        \"id\": 1,\n                        \"title\": \"Vero dolorum alias iste assumenda.\",\n                        \"description\": \"Et architecto cumque reprehenderit optio doloribus. Eveniet voluptas nihil molestiae adipisci rerum. Quis quis natus consequuntur qui alias sit ipsa.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-10-04\",\n                        \"assigned_to\": 2,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"dependency_task_id\": 7,\n                            \"task_id\": 1\n                        }\n                    },\n                    {\n                        \"id\": 10,\n                        \"title\": \"Excepturi repellendus quos illum ullam.\",\n                        \"description\": \"Qui vel aut qui ut commodi vero numquam. Magnam quis architecto minima vel dolore temporibus odit adipisci. In accusantium non sint error voluptatum accusantium.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-10-08\",\n                        \"assigned_to\": 2,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"dependency_task_id\": 7,\n                            \"task_id\": 10\n                        }\n                    }\n                ]\n            },\n            {\n                \"id\": 8,\n                \"title\": \"Libero atque est cum.\",\n                \"description\": \"Fugiat asperiores deleniti eum doloribus. Sequi est eum unde accusantium rem itaque. Voluptatem enim iste expedita rerum culpa. Atque quia tenetur quam. Voluptas quo est beatae rerum sit temporibus.\",\n                \"status\": \"pending\",\n                \"due_date\": \"2025-10-06\",\n                \"assigned_to\": 3,\n                \"created_by\": 1,\n                \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"assigned_user\": {\n                    \"id\": 3,\n                    \"name\": \"User Two\",\n                    \"email\": \"user2@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:13.000000Z\"\n                },\n                \"creator\": {\n                    \"id\": 1,\n                    \"name\": \"Manager One\",\n                    \"email\": \"manager@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:12.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:12.000000Z\"\n                },\n                \"dependencies\": [\n                    {\n                        \"id\": 9,\n                        \"title\": \"Error officia quia veniam alias consequuntur quia ab consequatur.\",\n                        \"description\": \"Et temporibus explicabo est beatae cum. Officia quibusdam placeat dicta sit et. Distinctio animi esse harum ipsum illo. Dolorem voluptas inventore voluptas porro ipsam consequuntur.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-10-14\",\n                        \"assigned_to\": 3,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"task_id\": 8,\n                            \"dependency_task_id\": 9\n                        }\n                    }\n                ],\n                \"dependents\": []\n            },\n            {\n                \"id\": 9,\n                \"title\": \"Error officia quia veniam alias consequuntur quia ab consequatur.\",\n                \"description\": \"Et temporibus explicabo est beatae cum. Officia quibusdam placeat dicta sit et. Distinctio animi esse harum ipsum illo. Dolorem voluptas inventore voluptas porro ipsam consequuntur.\",\n                \"status\": \"pending\",\n                \"due_date\": \"2025-10-14\",\n                \"assigned_to\": 3,\n                \"created_by\": 1,\n                \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"assigned_user\": {\n                    \"id\": 3,\n                    \"name\": \"User Two\",\n                    \"email\": \"user2@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:13.000000Z\"\n                },\n                \"creator\": {\n                    \"id\": 1,\n                    \"name\": \"Manager One\",\n                    \"email\": \"manager@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:12.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:12.000000Z\"\n                },\n                \"dependencies\": [],\n                \"dependents\": [\n                    {\n                        \"id\": 3,\n                        \"title\": \"Veritatis odit ratione sint labore.\",\n                        \"description\": \"Voluptatem nisi est sequi placeat corporis. Iusto minima commodi nihil est nesciunt. Sint in quia maxime non architecto. Saepe quia quis repudiandae ratione mollitia qui natus. Quibusdam laborum vel ea ut qui sed eum.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-10-10\",\n                        \"assigned_to\": 3,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"dependency_task_id\": 9,\n                            \"task_id\": 3\n                        }\n                    },\n                    {\n                        \"id\": 8,\n                        \"title\": \"Libero atque est cum.\",\n                        \"description\": \"Fugiat asperiores deleniti eum doloribus. Sequi est eum unde accusantium rem itaque. Voluptatem enim iste expedita rerum culpa. Atque quia tenetur quam. Voluptas quo est beatae rerum sit temporibus.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-10-06\",\n                        \"assigned_to\": 3,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"dependency_task_id\": 9,\n                            \"task_id\": 8\n                        }\n                    }\n                ]\n            },\n            {\n                \"id\": 10,\n                \"title\": \"Excepturi repellendus quos illum ullam.\",\n                \"description\": \"Qui vel aut qui ut commodi vero numquam. Magnam quis architecto minima vel dolore temporibus odit adipisci. In accusantium non sint error voluptatum accusantium.\",\n                \"status\": \"pending\",\n                \"due_date\": \"2025-10-08\",\n                \"assigned_to\": 2,\n                \"created_by\": 1,\n                \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"assigned_user\": {\n                    \"id\": 2,\n                    \"name\": \"User One\",\n                    \"email\": \"user@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:12.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:12.000000Z\"\n                },\n                \"creator\": {\n                    \"id\": 1,\n                    \"name\": \"Manager One\",\n                    \"email\": \"manager@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:12.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:12.000000Z\"\n                },\n                \"dependencies\": [\n                    {\n                        \"id\": 7,\n                        \"title\": \"Esse qui nostrum necessitatibus quam culpa placeat ut.\",\n                        \"description\": \"Repellendus et adipisci sit eius qui. Quo necessitatibus eius illum hic ea impedit ea. Inventore vitae et et ipsa sint. Magni in aut quia ut.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-09-26\",\n                        \"assigned_to\": 3,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"task_id\": 10,\n                            \"dependency_task_id\": 7\n                        }\n                    }\n                ],\n                \"dependents\": [\n                    {\n                        \"id\": 3,\n                        \"title\": \"Veritatis odit ratione sint labore.\",\n                        \"description\": \"Voluptatem nisi est sequi placeat corporis. Iusto minima commodi nihil est nesciunt. Sint in quia maxime non architecto. Saepe quia quis repudiandae ratione mollitia qui natus. Quibusdam laborum vel ea ut qui sed eum.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-10-10\",\n                        \"assigned_to\": 3,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"dependency_task_id\": 10,\n                            \"task_id\": 3\n                        }\n                    },\n                    {\n                        \"id\": 6,\n                        \"title\": \"Id ea earum aut occaecati autem commodi explicabo.\",\n                        \"description\": \"Dolorem aut sunt et necessitatibus expedita voluptatem laboriosam. Saepe qui aut et repellat non officiis amet. Rerum voluptas quam eum hic. Voluptatem repudiandae excepturi architecto odio ab qui. Quia adipisci et illum sit natus eligendi pariatur.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-10-15\",\n                        \"assigned_to\": 2,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"dependency_task_id\": 10,\n                            \"task_id\": 6\n                        }\n                    }\n                ]\n            }\n        ],\n        \"first_page_url\": \"http://127.0.0.1:8000/api/tasks?page=1\",\n        \"from\": 1,\n        \"last_page\": 1,\n        \"last_page_url\": \"http://127.0.0.1:8000/api/tasks?page=1\",\n        \"links\": [\n            {\n                \"url\": null,\n                \"label\": \"&laquo; Previous\",\n                \"page\": null,\n                \"active\": false\n            },\n            {\n                \"url\": \"http://127.0.0.1:8000/api/tasks?page=1\",\n                \"label\": \"1\",\n                \"page\": 1,\n                \"active\": true\n            },\n            {\n                \"url\": null,\n                \"label\": \"Next &raquo;\",\n                \"page\": null,\n                \"active\": false\n            }\n        ],\n        \"next_page_url\": null,\n        \"path\": \"http://127.0.0.1:8000/api/tasks\",\n        \"per_page\": 10,\n        \"prev_page_url\": null,\n        \"to\": 10,\n        \"total\": 10\n    },\n    \"errors\": null\n}"
+						},
+						{
+							"name": "Filter by status (manager)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/tasks?status=pending",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"tasks"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "pending"
+										},
+										{
+											"key": "due_date_from",
+											"value": "2025-09-20",
+											"disabled": true
+										},
+										{
+											"key": "due_date_to",
+											"value": "2025-09-26",
+											"disabled": true
+										},
+										{
+											"key": "assigned_to",
+											"value": "3",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 20 Sep 2025 20:28:26 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"status_code\": 200,\n    \"message\": \"Tasks retrieved successfully\",\n    \"data\": {\n        \"current_page\": 1,\n        \"data\": [\n            {\n                \"id\": 1,\n                \"title\": \"Vero dolorum alias iste assumenda.\",\n                \"description\": \"Et architecto cumque reprehenderit optio doloribus. Eveniet voluptas nihil molestiae adipisci rerum. Quis quis natus consequuntur qui alias sit ipsa.\",\n                \"status\": \"pending\",\n                \"due_date\": \"2025-10-04\",\n                \"assigned_to\": 2,\n                \"created_by\": 1,\n                \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"assigned_user\": {\n                    \"id\": 2,\n                    \"name\": \"User One\",\n                    \"email\": \"user@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:12.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:12.000000Z\"\n                },\n                \"creator\": {\n                    \"id\": 1,\n                    \"name\": \"Manager One\",\n                    \"email\": \"manager@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:12.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:12.000000Z\"\n                },\n                \"dependencies\": [\n                    {\n                        \"id\": 7,\n                        \"title\": \"Esse qui nostrum necessitatibus quam culpa placeat ut.\",\n                        \"description\": \"Repellendus et adipisci sit eius qui. Quo necessitatibus eius illum hic ea impedit ea. Inventore vitae et et ipsa sint. Magni in aut quia ut.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-09-26\",\n                        \"assigned_to\": 3,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"task_id\": 1,\n                            \"dependency_task_id\": 7\n                        }\n                    }\n                ],\n                \"dependents\": []\n            },\n            {\n                \"id\": 2,\n                \"title\": \"Laboriosam repudiandae autem quasi eos aspernatur aut.\",\n                \"description\": \"Possimus quos aspernatur voluptatem et hic omnis ut nostrum. Aut cupiditate saepe in et. Provident labore iusto quia voluptate aut eveniet.\",\n                \"status\": \"pending\",\n                \"due_date\": \"2025-09-25\",\n                \"assigned_to\": 2,\n                \"created_by\": 1,\n                \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"assigned_user\": {\n                    \"id\": 2,\n                    \"name\": \"User One\",\n                    \"email\": \"user@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:12.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:12.000000Z\"\n                },\n                \"creator\": {\n                    \"id\": 1,\n                    \"name\": \"Manager One\",\n                    \"email\": \"manager@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:12.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:12.000000Z\"\n                },\n                \"dependencies\": [\n                    {\n                        \"id\": 4,\n                        \"title\": \"Expedita non rem quibusdam enim nobis non amet.\",\n                        \"description\": \"Recusandae corrupti laboriosam perspiciatis quo voluptatum dolorum. Maiores est doloremque consequatur id modi. Ea occaecati minima vero nihil.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-10-01\",\n                        \"assigned_to\": 2,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"task_id\": 2,\n                            \"dependency_task_id\": 4\n                        }\n                    },\n                    {\n                        \"id\": 6,\n                        \"title\": \"Id ea earum aut occaecati autem commodi explicabo.\",\n                        \"description\": \"Dolorem aut sunt et necessitatibus expedita voluptatem laboriosam. Saepe qui aut et repellat non officiis amet. Rerum voluptas quam eum hic. Voluptatem repudiandae excepturi architecto odio ab qui. Quia adipisci et illum sit natus eligendi pariatur.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-10-15\",\n                        \"assigned_to\": 2,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"task_id\": 2,\n                            \"dependency_task_id\": 6\n                        }\n                    }\n                ],\n                \"dependents\": [\n                    {\n                        \"id\": 7,\n                        \"title\": \"Esse qui nostrum necessitatibus quam culpa placeat ut.\",\n                        \"description\": \"Repellendus et adipisci sit eius qui. Quo necessitatibus eius illum hic ea impedit ea. Inventore vitae et et ipsa sint. Magni in aut quia ut.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-09-26\",\n                        \"assigned_to\": 3,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"dependency_task_id\": 2,\n                            \"task_id\": 7\n                        }\n                    }\n                ]\n            },\n            {\n                \"id\": 3,\n                \"title\": \"Veritatis odit ratione sint labore.\",\n                \"description\": \"Voluptatem nisi est sequi placeat corporis. Iusto minima commodi nihil est nesciunt. Sint in quia maxime non architecto. Saepe quia quis repudiandae ratione mollitia qui natus. Quibusdam laborum vel ea ut qui sed eum.\",\n                \"status\": \"pending\",\n                \"due_date\": \"2025-10-10\",\n                \"assigned_to\": 3,\n                \"created_by\": 1,\n                \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"assigned_user\": {\n                    \"id\": 3,\n                    \"name\": \"User Two\",\n                    \"email\": \"user2@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:13.000000Z\"\n                },\n                \"creator\": {\n                    \"id\": 1,\n                    \"name\": \"Manager One\",\n                    \"email\": \"manager@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:12.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:12.000000Z\"\n                },\n                \"dependencies\": [\n                    {\n                        \"id\": 9,\n                        \"title\": \"Error officia quia veniam alias consequuntur quia ab consequatur.\",\n                        \"description\": \"Et temporibus explicabo est beatae cum. Officia quibusdam placeat dicta sit et. Distinctio animi esse harum ipsum illo. Dolorem voluptas inventore voluptas porro ipsam consequuntur.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-10-14\",\n                        \"assigned_to\": 3,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"task_id\": 3,\n                            \"dependency_task_id\": 9\n                        }\n                    },\n                    {\n                        \"id\": 10,\n                        \"title\": \"Excepturi repellendus quos illum ullam.\",\n                        \"description\": \"Qui vel aut qui ut commodi vero numquam. Magnam quis architecto minima vel dolore temporibus odit adipisci. In accusantium non sint error voluptatum accusantium.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-10-08\",\n                        \"assigned_to\": 2,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"task_id\": 3,\n                            \"dependency_task_id\": 10\n                        }\n                    }\n                ],\n                \"dependents\": [\n                    {\n                        \"id\": 5,\n                        \"title\": \"Alias quis voluptate est et totam libero labore.\",\n                        \"description\": \"Nesciunt molestias eum culpa alias et praesentium doloremque. Omnis ut quia qui.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-09-27\",\n                        \"assigned_to\": 3,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"dependency_task_id\": 3,\n                            \"task_id\": 5\n                        }\n                    }\n                ]\n            },\n            {\n                \"id\": 4,\n                \"title\": \"Expedita non rem quibusdam enim nobis non amet.\",\n                \"description\": \"Recusandae corrupti laboriosam perspiciatis quo voluptatum dolorum. Maiores est doloremque consequatur id modi. Ea occaecati minima vero nihil.\",\n                \"status\": \"pending\",\n                \"due_date\": \"2025-10-01\",\n                \"assigned_to\": 2,\n                \"created_by\": 1,\n                \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"assigned_user\": {\n                    \"id\": 2,\n                    \"name\": \"User One\",\n                    \"email\": \"user@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:12.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:12.000000Z\"\n                },\n                \"creator\": {\n                    \"id\": 1,\n                    \"name\": \"Manager One\",\n                    \"email\": \"manager@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:12.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:12.000000Z\"\n                },\n                \"dependencies\": [],\n                \"dependents\": [\n                    {\n                        \"id\": 2,\n                        \"title\": \"Laboriosam repudiandae autem quasi eos aspernatur aut.\",\n                        \"description\": \"Possimus quos aspernatur voluptatem et hic omnis ut nostrum. Aut cupiditate saepe in et. Provident labore iusto quia voluptate aut eveniet.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-09-25\",\n                        \"assigned_to\": 2,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"dependency_task_id\": 4,\n                            \"task_id\": 2\n                        }\n                    }\n                ]\n            },\n            {\n                \"id\": 5,\n                \"title\": \"Alias quis voluptate est et totam libero labore.\",\n                \"description\": \"Nesciunt molestias eum culpa alias et praesentium doloremque. Omnis ut quia qui.\",\n                \"status\": \"pending\",\n                \"due_date\": \"2025-09-27\",\n                \"assigned_to\": 3,\n                \"created_by\": 1,\n                \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"assigned_user\": {\n                    \"id\": 3,\n                    \"name\": \"User Two\",\n                    \"email\": \"user2@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:13.000000Z\"\n                },\n                \"creator\": {\n                    \"id\": 1,\n                    \"name\": \"Manager One\",\n                    \"email\": \"manager@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:12.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:12.000000Z\"\n                },\n                \"dependencies\": [\n                    {\n                        \"id\": 3,\n                        \"title\": \"Veritatis odit ratione sint labore.\",\n                        \"description\": \"Voluptatem nisi est sequi placeat corporis. Iusto minima commodi nihil est nesciunt. Sint in quia maxime non architecto. Saepe quia quis repudiandae ratione mollitia qui natus. Quibusdam laborum vel ea ut qui sed eum.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-10-10\",\n                        \"assigned_to\": 3,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"task_id\": 5,\n                            \"dependency_task_id\": 3\n                        }\n                    }\n                ],\n                \"dependents\": []\n            },\n            {\n                \"id\": 6,\n                \"title\": \"Id ea earum aut occaecati autem commodi explicabo.\",\n                \"description\": \"Dolorem aut sunt et necessitatibus expedita voluptatem laboriosam. Saepe qui aut et repellat non officiis amet. Rerum voluptas quam eum hic. Voluptatem repudiandae excepturi architecto odio ab qui. Quia adipisci et illum sit natus eligendi pariatur.\",\n                \"status\": \"pending\",\n                \"due_date\": \"2025-10-15\",\n                \"assigned_to\": 2,\n                \"created_by\": 1,\n                \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"assigned_user\": {\n                    \"id\": 2,\n                    \"name\": \"User One\",\n                    \"email\": \"user@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:12.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:12.000000Z\"\n                },\n                \"creator\": {\n                    \"id\": 1,\n                    \"name\": \"Manager One\",\n                    \"email\": \"manager@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:12.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:12.000000Z\"\n                },\n                \"dependencies\": [\n                    {\n                        \"id\": 10,\n                        \"title\": \"Excepturi repellendus quos illum ullam.\",\n                        \"description\": \"Qui vel aut qui ut commodi vero numquam. Magnam quis architecto minima vel dolore temporibus odit adipisci. In accusantium non sint error voluptatum accusantium.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-10-08\",\n                        \"assigned_to\": 2,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"task_id\": 6,\n                            \"dependency_task_id\": 10\n                        }\n                    }\n                ],\n                \"dependents\": [\n                    {\n                        \"id\": 2,\n                        \"title\": \"Laboriosam repudiandae autem quasi eos aspernatur aut.\",\n                        \"description\": \"Possimus quos aspernatur voluptatem et hic omnis ut nostrum. Aut cupiditate saepe in et. Provident labore iusto quia voluptate aut eveniet.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-09-25\",\n                        \"assigned_to\": 2,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"dependency_task_id\": 6,\n                            \"task_id\": 2\n                        }\n                    }\n                ]\n            },\n            {\n                \"id\": 7,\n                \"title\": \"Esse qui nostrum necessitatibus quam culpa placeat ut.\",\n                \"description\": \"Repellendus et adipisci sit eius qui. Quo necessitatibus eius illum hic ea impedit ea. Inventore vitae et et ipsa sint. Magni in aut quia ut.\",\n                \"status\": \"pending\",\n                \"due_date\": \"2025-09-26\",\n                \"assigned_to\": 3,\n                \"created_by\": 1,\n                \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"assigned_user\": {\n                    \"id\": 3,\n                    \"name\": \"User Two\",\n                    \"email\": \"user2@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:13.000000Z\"\n                },\n                \"creator\": {\n                    \"id\": 1,\n                    \"name\": \"Manager One\",\n                    \"email\": \"manager@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:12.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:12.000000Z\"\n                },\n                \"dependencies\": [\n                    {\n                        \"id\": 2,\n                        \"title\": \"Laboriosam repudiandae autem quasi eos aspernatur aut.\",\n                        \"description\": \"Possimus quos aspernatur voluptatem et hic omnis ut nostrum. Aut cupiditate saepe in et. Provident labore iusto quia voluptate aut eveniet.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-09-25\",\n                        \"assigned_to\": 2,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"task_id\": 7,\n                            \"dependency_task_id\": 2\n                        }\n                    }\n                ],\n                \"dependents\": [\n                    {\n                        \"id\": 1,\n                        \"title\": \"Vero dolorum alias iste assumenda.\",\n                        \"description\": \"Et architecto cumque reprehenderit optio doloribus. Eveniet voluptas nihil molestiae adipisci rerum. Quis quis natus consequuntur qui alias sit ipsa.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-10-04\",\n                        \"assigned_to\": 2,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"dependency_task_id\": 7,\n                            \"task_id\": 1\n                        }\n                    },\n                    {\n                        \"id\": 10,\n                        \"title\": \"Excepturi repellendus quos illum ullam.\",\n                        \"description\": \"Qui vel aut qui ut commodi vero numquam. Magnam quis architecto minima vel dolore temporibus odit adipisci. In accusantium non sint error voluptatum accusantium.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-10-08\",\n                        \"assigned_to\": 2,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"dependency_task_id\": 7,\n                            \"task_id\": 10\n                        }\n                    }\n                ]\n            },\n            {\n                \"id\": 8,\n                \"title\": \"Libero atque est cum.\",\n                \"description\": \"Fugiat asperiores deleniti eum doloribus. Sequi est eum unde accusantium rem itaque. Voluptatem enim iste expedita rerum culpa. Atque quia tenetur quam. Voluptas quo est beatae rerum sit temporibus.\",\n                \"status\": \"pending\",\n                \"due_date\": \"2025-10-06\",\n                \"assigned_to\": 3,\n                \"created_by\": 1,\n                \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"assigned_user\": {\n                    \"id\": 3,\n                    \"name\": \"User Two\",\n                    \"email\": \"user2@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:13.000000Z\"\n                },\n                \"creator\": {\n                    \"id\": 1,\n                    \"name\": \"Manager One\",\n                    \"email\": \"manager@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:12.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:12.000000Z\"\n                },\n                \"dependencies\": [\n                    {\n                        \"id\": 9,\n                        \"title\": \"Error officia quia veniam alias consequuntur quia ab consequatur.\",\n                        \"description\": \"Et temporibus explicabo est beatae cum. Officia quibusdam placeat dicta sit et. Distinctio animi esse harum ipsum illo. Dolorem voluptas inventore voluptas porro ipsam consequuntur.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-10-14\",\n                        \"assigned_to\": 3,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"task_id\": 8,\n                            \"dependency_task_id\": 9\n                        }\n                    }\n                ],\n                \"dependents\": []\n            },\n            {\n                \"id\": 9,\n                \"title\": \"Error officia quia veniam alias consequuntur quia ab consequatur.\",\n                \"description\": \"Et temporibus explicabo est beatae cum. Officia quibusdam placeat dicta sit et. Distinctio animi esse harum ipsum illo. Dolorem voluptas inventore voluptas porro ipsam consequuntur.\",\n                \"status\": \"pending\",\n                \"due_date\": \"2025-10-14\",\n                \"assigned_to\": 3,\n                \"created_by\": 1,\n                \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"assigned_user\": {\n                    \"id\": 3,\n                    \"name\": \"User Two\",\n                    \"email\": \"user2@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:13.000000Z\"\n                },\n                \"creator\": {\n                    \"id\": 1,\n                    \"name\": \"Manager One\",\n                    \"email\": \"manager@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:12.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:12.000000Z\"\n                },\n                \"dependencies\": [],\n                \"dependents\": [\n                    {\n                        \"id\": 3,\n                        \"title\": \"Veritatis odit ratione sint labore.\",\n                        \"description\": \"Voluptatem nisi est sequi placeat corporis. Iusto minima commodi nihil est nesciunt. Sint in quia maxime non architecto. Saepe quia quis repudiandae ratione mollitia qui natus. Quibusdam laborum vel ea ut qui sed eum.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-10-10\",\n                        \"assigned_to\": 3,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"dependency_task_id\": 9,\n                            \"task_id\": 3\n                        }\n                    },\n                    {\n                        \"id\": 8,\n                        \"title\": \"Libero atque est cum.\",\n                        \"description\": \"Fugiat asperiores deleniti eum doloribus. Sequi est eum unde accusantium rem itaque. Voluptatem enim iste expedita rerum culpa. Atque quia tenetur quam. Voluptas quo est beatae rerum sit temporibus.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-10-06\",\n                        \"assigned_to\": 3,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"dependency_task_id\": 9,\n                            \"task_id\": 8\n                        }\n                    }\n                ]\n            },\n            {\n                \"id\": 10,\n                \"title\": \"Excepturi repellendus quos illum ullam.\",\n                \"description\": \"Qui vel aut qui ut commodi vero numquam. Magnam quis architecto minima vel dolore temporibus odit adipisci. In accusantium non sint error voluptatum accusantium.\",\n                \"status\": \"pending\",\n                \"due_date\": \"2025-10-08\",\n                \"assigned_to\": 2,\n                \"created_by\": 1,\n                \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"assigned_user\": {\n                    \"id\": 2,\n                    \"name\": \"User One\",\n                    \"email\": \"user@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:12.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:12.000000Z\"\n                },\n                \"creator\": {\n                    \"id\": 1,\n                    \"name\": \"Manager One\",\n                    \"email\": \"manager@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:12.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:12.000000Z\"\n                },\n                \"dependencies\": [\n                    {\n                        \"id\": 7,\n                        \"title\": \"Esse qui nostrum necessitatibus quam culpa placeat ut.\",\n                        \"description\": \"Repellendus et adipisci sit eius qui. Quo necessitatibus eius illum hic ea impedit ea. Inventore vitae et et ipsa sint. Magni in aut quia ut.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-09-26\",\n                        \"assigned_to\": 3,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"task_id\": 10,\n                            \"dependency_task_id\": 7\n                        }\n                    }\n                ],\n                \"dependents\": [\n                    {\n                        \"id\": 3,\n                        \"title\": \"Veritatis odit ratione sint labore.\",\n                        \"description\": \"Voluptatem nisi est sequi placeat corporis. Iusto minima commodi nihil est nesciunt. Sint in quia maxime non architecto. Saepe quia quis repudiandae ratione mollitia qui natus. Quibusdam laborum vel ea ut qui sed eum.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-10-10\",\n                        \"assigned_to\": 3,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"dependency_task_id\": 10,\n                            \"task_id\": 3\n                        }\n                    },\n                    {\n                        \"id\": 6,\n                        \"title\": \"Id ea earum aut occaecati autem commodi explicabo.\",\n                        \"description\": \"Dolorem aut sunt et necessitatibus expedita voluptatem laboriosam. Saepe qui aut et repellat non officiis amet. Rerum voluptas quam eum hic. Voluptatem repudiandae excepturi architecto odio ab qui. Quia adipisci et illum sit natus eligendi pariatur.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-10-15\",\n                        \"assigned_to\": 2,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"dependency_task_id\": 10,\n                            \"task_id\": 6\n                        }\n                    }\n                ]\n            }\n        ],\n        \"first_page_url\": \"http://127.0.0.1:8000/api/tasks?page=1\",\n        \"from\": 1,\n        \"last_page\": 1,\n        \"last_page_url\": \"http://127.0.0.1:8000/api/tasks?page=1\",\n        \"links\": [\n            {\n                \"url\": null,\n                \"label\": \"&laquo; Previous\",\n                \"page\": null,\n                \"active\": false\n            },\n            {\n                \"url\": \"http://127.0.0.1:8000/api/tasks?page=1\",\n                \"label\": \"1\",\n                \"page\": 1,\n                \"active\": true\n            },\n            {\n                \"url\": null,\n                \"label\": \"Next &raquo;\",\n                \"page\": null,\n                \"active\": false\n            }\n        ],\n        \"next_page_url\": null,\n        \"path\": \"http://127.0.0.1:8000/api/tasks\",\n        \"per_page\": 10,\n        \"prev_page_url\": null,\n        \"to\": 10,\n        \"total\": 10\n    },\n    \"errors\": null\n}"
+						},
+						{
+							"name": "Filter by due date range (manager)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/tasks?due_date_from=2025-09-20&due_date_to=2025-09-26",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"tasks"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "pending",
+											"disabled": true
+										},
+										{
+											"key": "due_date_from",
+											"value": "2025-09-20"
+										},
+										{
+											"key": "due_date_to",
+											"value": "2025-09-26"
+										},
+										{
+											"key": "assigned_to",
+											"value": "3",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 20 Sep 2025 20:32:16 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"status_code\": 200,\n    \"message\": \"Tasks retrieved successfully\",\n    \"data\": {\n        \"current_page\": 1,\n        \"data\": [\n            {\n                \"id\": 2,\n                \"title\": \"Laboriosam repudiandae autem quasi eos aspernatur aut.\",\n                \"description\": \"Possimus quos aspernatur voluptatem et hic omnis ut nostrum. Aut cupiditate saepe in et. Provident labore iusto quia voluptate aut eveniet.\",\n                \"status\": \"pending\",\n                \"due_date\": \"2025-09-25\",\n                \"assigned_to\": 2,\n                \"created_by\": 1,\n                \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"assigned_user\": {\n                    \"id\": 2,\n                    \"name\": \"User One\",\n                    \"email\": \"user@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:12.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:12.000000Z\"\n                },\n                \"creator\": {\n                    \"id\": 1,\n                    \"name\": \"Manager One\",\n                    \"email\": \"manager@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:12.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:12.000000Z\"\n                },\n                \"dependencies\": [\n                    {\n                        \"id\": 4,\n                        \"title\": \"Expedita non rem quibusdam enim nobis non amet.\",\n                        \"description\": \"Recusandae corrupti laboriosam perspiciatis quo voluptatum dolorum. Maiores est doloremque consequatur id modi. Ea occaecati minima vero nihil.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-10-01\",\n                        \"assigned_to\": 2,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"task_id\": 2,\n                            \"dependency_task_id\": 4\n                        }\n                    },\n                    {\n                        \"id\": 6,\n                        \"title\": \"Id ea earum aut occaecati autem commodi explicabo.\",\n                        \"description\": \"Dolorem aut sunt et necessitatibus expedita voluptatem laboriosam. Saepe qui aut et repellat non officiis amet. Rerum voluptas quam eum hic. Voluptatem repudiandae excepturi architecto odio ab qui. Quia adipisci et illum sit natus eligendi pariatur.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-10-15\",\n                        \"assigned_to\": 2,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"task_id\": 2,\n                            \"dependency_task_id\": 6\n                        }\n                    }\n                ],\n                \"dependents\": [\n                    {\n                        \"id\": 7,\n                        \"title\": \"Esse qui nostrum necessitatibus quam culpa placeat ut.\",\n                        \"description\": \"Repellendus et adipisci sit eius qui. Quo necessitatibus eius illum hic ea impedit ea. Inventore vitae et et ipsa sint. Magni in aut quia ut.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-09-26\",\n                        \"assigned_to\": 3,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"dependency_task_id\": 2,\n                            \"task_id\": 7\n                        }\n                    }\n                ]\n            },\n            {\n                \"id\": 7,\n                \"title\": \"Esse qui nostrum necessitatibus quam culpa placeat ut.\",\n                \"description\": \"Repellendus et adipisci sit eius qui. Quo necessitatibus eius illum hic ea impedit ea. Inventore vitae et et ipsa sint. Magni in aut quia ut.\",\n                \"status\": \"pending\",\n                \"due_date\": \"2025-09-26\",\n                \"assigned_to\": 3,\n                \"created_by\": 1,\n                \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"assigned_user\": {\n                    \"id\": 3,\n                    \"name\": \"User Two\",\n                    \"email\": \"user2@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:13.000000Z\"\n                },\n                \"creator\": {\n                    \"id\": 1,\n                    \"name\": \"Manager One\",\n                    \"email\": \"manager@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:12.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:12.000000Z\"\n                },\n                \"dependencies\": [\n                    {\n                        \"id\": 2,\n                        \"title\": \"Laboriosam repudiandae autem quasi eos aspernatur aut.\",\n                        \"description\": \"Possimus quos aspernatur voluptatem et hic omnis ut nostrum. Aut cupiditate saepe in et. Provident labore iusto quia voluptate aut eveniet.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-09-25\",\n                        \"assigned_to\": 2,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"task_id\": 7,\n                            \"dependency_task_id\": 2\n                        }\n                    }\n                ],\n                \"dependents\": [\n                    {\n                        \"id\": 1,\n                        \"title\": \"Vero dolorum alias iste assumenda.\",\n                        \"description\": \"Et architecto cumque reprehenderit optio doloribus. Eveniet voluptas nihil molestiae adipisci rerum. Quis quis natus consequuntur qui alias sit ipsa.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-10-04\",\n                        \"assigned_to\": 2,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"dependency_task_id\": 7,\n                            \"task_id\": 1\n                        }\n                    },\n                    {\n                        \"id\": 10,\n                        \"title\": \"Excepturi repellendus quos illum ullam.\",\n                        \"description\": \"Qui vel aut qui ut commodi vero numquam. Magnam quis architecto minima vel dolore temporibus odit adipisci. In accusantium non sint error voluptatum accusantium.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-10-08\",\n                        \"assigned_to\": 2,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"dependency_task_id\": 7,\n                            \"task_id\": 10\n                        }\n                    }\n                ]\n            }\n        ],\n        \"first_page_url\": \"http://127.0.0.1:8000/api/tasks?page=1\",\n        \"from\": 1,\n        \"last_page\": 1,\n        \"last_page_url\": \"http://127.0.0.1:8000/api/tasks?page=1\",\n        \"links\": [\n            {\n                \"url\": null,\n                \"label\": \"&laquo; Previous\",\n                \"page\": null,\n                \"active\": false\n            },\n            {\n                \"url\": \"http://127.0.0.1:8000/api/tasks?page=1\",\n                \"label\": \"1\",\n                \"page\": 1,\n                \"active\": true\n            },\n            {\n                \"url\": null,\n                \"label\": \"Next &raquo;\",\n                \"page\": null,\n                \"active\": false\n            }\n        ],\n        \"next_page_url\": null,\n        \"path\": \"http://127.0.0.1:8000/api/tasks\",\n        \"per_page\": 10,\n        \"prev_page_url\": null,\n        \"to\": 2,\n        \"total\": 2\n    },\n    \"errors\": null\n}"
+						},
+						{
+							"name": "Filter by assigned user (manager)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/tasks?assigned_to=3",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"tasks"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "pending",
+											"disabled": true
+										},
+										{
+											"key": "due_date_from",
+											"value": "2025-09-20",
+											"disabled": true
+										},
+										{
+											"key": "due_date_to",
+											"value": "2025-09-26",
+											"disabled": true
+										},
+										{
+											"key": "assigned_to",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 20 Sep 2025 20:33:36 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"status_code\": 200,\n    \"message\": \"Tasks retrieved successfully\",\n    \"data\": {\n        \"current_page\": 1,\n        \"data\": [\n            {\n                \"id\": 3,\n                \"title\": \"Veritatis odit ratione sint labore.\",\n                \"description\": \"Voluptatem nisi est sequi placeat corporis. Iusto minima commodi nihil est nesciunt. Sint in quia maxime non architecto. Saepe quia quis repudiandae ratione mollitia qui natus. Quibusdam laborum vel ea ut qui sed eum.\",\n                \"status\": \"pending\",\n                \"due_date\": \"2025-10-10\",\n                \"assigned_to\": 3,\n                \"created_by\": 1,\n                \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"assigned_user\": {\n                    \"id\": 3,\n                    \"name\": \"User Two\",\n                    \"email\": \"user2@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:13.000000Z\"\n                },\n                \"creator\": {\n                    \"id\": 1,\n                    \"name\": \"Manager One\",\n                    \"email\": \"manager@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:12.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:12.000000Z\"\n                },\n                \"dependencies\": [\n                    {\n                        \"id\": 9,\n                        \"title\": \"Error officia quia veniam alias consequuntur quia ab consequatur.\",\n                        \"description\": \"Et temporibus explicabo est beatae cum. Officia quibusdam placeat dicta sit et. Distinctio animi esse harum ipsum illo. Dolorem voluptas inventore voluptas porro ipsam consequuntur.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-10-14\",\n                        \"assigned_to\": 3,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"task_id\": 3,\n                            \"dependency_task_id\": 9\n                        }\n                    },\n                    {\n                        \"id\": 10,\n                        \"title\": \"Excepturi repellendus quos illum ullam.\",\n                        \"description\": \"Qui vel aut qui ut commodi vero numquam. Magnam quis architecto minima vel dolore temporibus odit adipisci. In accusantium non sint error voluptatum accusantium.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-10-08\",\n                        \"assigned_to\": 2,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"task_id\": 3,\n                            \"dependency_task_id\": 10\n                        }\n                    }\n                ],\n                \"dependents\": [\n                    {\n                        \"id\": 5,\n                        \"title\": \"Alias quis voluptate est et totam libero labore.\",\n                        \"description\": \"Nesciunt molestias eum culpa alias et praesentium doloremque. Omnis ut quia qui.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-09-27\",\n                        \"assigned_to\": 3,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"dependency_task_id\": 3,\n                            \"task_id\": 5\n                        }\n                    }\n                ]\n            },\n            {\n                \"id\": 5,\n                \"title\": \"Alias quis voluptate est et totam libero labore.\",\n                \"description\": \"Nesciunt molestias eum culpa alias et praesentium doloremque. Omnis ut quia qui.\",\n                \"status\": \"pending\",\n                \"due_date\": \"2025-09-27\",\n                \"assigned_to\": 3,\n                \"created_by\": 1,\n                \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"assigned_user\": {\n                    \"id\": 3,\n                    \"name\": \"User Two\",\n                    \"email\": \"user2@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:13.000000Z\"\n                },\n                \"creator\": {\n                    \"id\": 1,\n                    \"name\": \"Manager One\",\n                    \"email\": \"manager@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:12.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:12.000000Z\"\n                },\n                \"dependencies\": [\n                    {\n                        \"id\": 3,\n                        \"title\": \"Veritatis odit ratione sint labore.\",\n                        \"description\": \"Voluptatem nisi est sequi placeat corporis. Iusto minima commodi nihil est nesciunt. Sint in quia maxime non architecto. Saepe quia quis repudiandae ratione mollitia qui natus. Quibusdam laborum vel ea ut qui sed eum.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-10-10\",\n                        \"assigned_to\": 3,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"task_id\": 5,\n                            \"dependency_task_id\": 3\n                        }\n                    }\n                ],\n                \"dependents\": []\n            },\n            {\n                \"id\": 7,\n                \"title\": \"Esse qui nostrum necessitatibus quam culpa placeat ut.\",\n                \"description\": \"Repellendus et adipisci sit eius qui. Quo necessitatibus eius illum hic ea impedit ea. Inventore vitae et et ipsa sint. Magni in aut quia ut.\",\n                \"status\": \"pending\",\n                \"due_date\": \"2025-09-26\",\n                \"assigned_to\": 3,\n                \"created_by\": 1,\n                \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"assigned_user\": {\n                    \"id\": 3,\n                    \"name\": \"User Two\",\n                    \"email\": \"user2@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:13.000000Z\"\n                },\n                \"creator\": {\n                    \"id\": 1,\n                    \"name\": \"Manager One\",\n                    \"email\": \"manager@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:12.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:12.000000Z\"\n                },\n                \"dependencies\": [\n                    {\n                        \"id\": 2,\n                        \"title\": \"Laboriosam repudiandae autem quasi eos aspernatur aut.\",\n                        \"description\": \"Possimus quos aspernatur voluptatem et hic omnis ut nostrum. Aut cupiditate saepe in et. Provident labore iusto quia voluptate aut eveniet.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-09-25\",\n                        \"assigned_to\": 2,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"task_id\": 7,\n                            \"dependency_task_id\": 2\n                        }\n                    }\n                ],\n                \"dependents\": [\n                    {\n                        \"id\": 1,\n                        \"title\": \"Vero dolorum alias iste assumenda.\",\n                        \"description\": \"Et architecto cumque reprehenderit optio doloribus. Eveniet voluptas nihil molestiae adipisci rerum. Quis quis natus consequuntur qui alias sit ipsa.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-10-04\",\n                        \"assigned_to\": 2,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"dependency_task_id\": 7,\n                            \"task_id\": 1\n                        }\n                    },\n                    {\n                        \"id\": 10,\n                        \"title\": \"Excepturi repellendus quos illum ullam.\",\n                        \"description\": \"Qui vel aut qui ut commodi vero numquam. Magnam quis architecto minima vel dolore temporibus odit adipisci. In accusantium non sint error voluptatum accusantium.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-10-08\",\n                        \"assigned_to\": 2,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"dependency_task_id\": 7,\n                            \"task_id\": 10\n                        }\n                    }\n                ]\n            },\n            {\n                \"id\": 8,\n                \"title\": \"Libero atque est cum.\",\n                \"description\": \"Fugiat asperiores deleniti eum doloribus. Sequi est eum unde accusantium rem itaque. Voluptatem enim iste expedita rerum culpa. Atque quia tenetur quam. Voluptas quo est beatae rerum sit temporibus.\",\n                \"status\": \"pending\",\n                \"due_date\": \"2025-10-06\",\n                \"assigned_to\": 3,\n                \"created_by\": 1,\n                \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"assigned_user\": {\n                    \"id\": 3,\n                    \"name\": \"User Two\",\n                    \"email\": \"user2@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:13.000000Z\"\n                },\n                \"creator\": {\n                    \"id\": 1,\n                    \"name\": \"Manager One\",\n                    \"email\": \"manager@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:12.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:12.000000Z\"\n                },\n                \"dependencies\": [\n                    {\n                        \"id\": 9,\n                        \"title\": \"Error officia quia veniam alias consequuntur quia ab consequatur.\",\n                        \"description\": \"Et temporibus explicabo est beatae cum. Officia quibusdam placeat dicta sit et. Distinctio animi esse harum ipsum illo. Dolorem voluptas inventore voluptas porro ipsam consequuntur.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-10-14\",\n                        \"assigned_to\": 3,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"task_id\": 8,\n                            \"dependency_task_id\": 9\n                        }\n                    }\n                ],\n                \"dependents\": []\n            },\n            {\n                \"id\": 9,\n                \"title\": \"Error officia quia veniam alias consequuntur quia ab consequatur.\",\n                \"description\": \"Et temporibus explicabo est beatae cum. Officia quibusdam placeat dicta sit et. Distinctio animi esse harum ipsum illo. Dolorem voluptas inventore voluptas porro ipsam consequuntur.\",\n                \"status\": \"pending\",\n                \"due_date\": \"2025-10-14\",\n                \"assigned_to\": 3,\n                \"created_by\": 1,\n                \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"assigned_user\": {\n                    \"id\": 3,\n                    \"name\": \"User Two\",\n                    \"email\": \"user2@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:13.000000Z\"\n                },\n                \"creator\": {\n                    \"id\": 1,\n                    \"name\": \"Manager One\",\n                    \"email\": \"manager@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:12.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:12.000000Z\"\n                },\n                \"dependencies\": [],\n                \"dependents\": [\n                    {\n                        \"id\": 3,\n                        \"title\": \"Veritatis odit ratione sint labore.\",\n                        \"description\": \"Voluptatem nisi est sequi placeat corporis. Iusto minima commodi nihil est nesciunt. Sint in quia maxime non architecto. Saepe quia quis repudiandae ratione mollitia qui natus. Quibusdam laborum vel ea ut qui sed eum.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-10-10\",\n                        \"assigned_to\": 3,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"dependency_task_id\": 9,\n                            \"task_id\": 3\n                        }\n                    },\n                    {\n                        \"id\": 8,\n                        \"title\": \"Libero atque est cum.\",\n                        \"description\": \"Fugiat asperiores deleniti eum doloribus. Sequi est eum unde accusantium rem itaque. Voluptatem enim iste expedita rerum culpa. Atque quia tenetur quam. Voluptas quo est beatae rerum sit temporibus.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-10-06\",\n                        \"assigned_to\": 3,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"dependency_task_id\": 9,\n                            \"task_id\": 8\n                        }\n                    }\n                ]\n            }\n        ],\n        \"first_page_url\": \"http://127.0.0.1:8000/api/tasks?page=1\",\n        \"from\": 1,\n        \"last_page\": 1,\n        \"last_page_url\": \"http://127.0.0.1:8000/api/tasks?page=1\",\n        \"links\": [\n            {\n                \"url\": null,\n                \"label\": \"&laquo; Previous\",\n                \"page\": null,\n                \"active\": false\n            },\n            {\n                \"url\": \"http://127.0.0.1:8000/api/tasks?page=1\",\n                \"label\": \"1\",\n                \"page\": 1,\n                \"active\": true\n            },\n            {\n                \"url\": null,\n                \"label\": \"Next &raquo;\",\n                \"page\": null,\n                \"active\": false\n            }\n        ],\n        \"next_page_url\": null,\n        \"path\": \"http://127.0.0.1:8000/api/tasks\",\n        \"per_page\": 10,\n        \"prev_page_url\": null,\n        \"to\": 5,\n        \"total\": 5\n    },\n    \"errors\": null\n}"
+						},
+						{
+							"name": "Combined filters (manager)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/tasks?status=pending&due_date_from=2025-09-20&due_date_to=2025-09-26&assigned_to=3",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"tasks"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "pending"
+										},
+										{
+											"key": "due_date_from",
+											"value": "2025-09-20"
+										},
+										{
+											"key": "due_date_to",
+											"value": "2025-09-26"
+										},
+										{
+											"key": "assigned_to",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 20 Sep 2025 20:34:52 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"status_code\": 200,\n    \"message\": \"Tasks retrieved successfully\",\n    \"data\": {\n        \"current_page\": 1,\n        \"data\": [\n            {\n                \"id\": 7,\n                \"title\": \"Esse qui nostrum necessitatibus quam culpa placeat ut.\",\n                \"description\": \"Repellendus et adipisci sit eius qui. Quo necessitatibus eius illum hic ea impedit ea. Inventore vitae et et ipsa sint. Magni in aut quia ut.\",\n                \"status\": \"pending\",\n                \"due_date\": \"2025-09-26\",\n                \"assigned_to\": 3,\n                \"created_by\": 1,\n                \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"assigned_user\": {\n                    \"id\": 3,\n                    \"name\": \"User Two\",\n                    \"email\": \"user2@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:13.000000Z\"\n                },\n                \"creator\": {\n                    \"id\": 1,\n                    \"name\": \"Manager One\",\n                    \"email\": \"manager@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:12.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:12.000000Z\"\n                },\n                \"dependencies\": [\n                    {\n                        \"id\": 2,\n                        \"title\": \"Laboriosam repudiandae autem quasi eos aspernatur aut.\",\n                        \"description\": \"Possimus quos aspernatur voluptatem et hic omnis ut nostrum. Aut cupiditate saepe in et. Provident labore iusto quia voluptate aut eveniet.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-09-25\",\n                        \"assigned_to\": 2,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"task_id\": 7,\n                            \"dependency_task_id\": 2\n                        }\n                    }\n                ],\n                \"dependents\": [\n                    {\n                        \"id\": 1,\n                        \"title\": \"Vero dolorum alias iste assumenda.\",\n                        \"description\": \"Et architecto cumque reprehenderit optio doloribus. Eveniet voluptas nihil molestiae adipisci rerum. Quis quis natus consequuntur qui alias sit ipsa.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-10-04\",\n                        \"assigned_to\": 2,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"dependency_task_id\": 7,\n                            \"task_id\": 1\n                        }\n                    },\n                    {\n                        \"id\": 10,\n                        \"title\": \"Excepturi repellendus quos illum ullam.\",\n                        \"description\": \"Qui vel aut qui ut commodi vero numquam. Magnam quis architecto minima vel dolore temporibus odit adipisci. In accusantium non sint error voluptatum accusantium.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-10-08\",\n                        \"assigned_to\": 2,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"dependency_task_id\": 7,\n                            \"task_id\": 10\n                        }\n                    }\n                ]\n            }\n        ],\n        \"first_page_url\": \"http://127.0.0.1:8000/api/tasks?page=1\",\n        \"from\": 1,\n        \"last_page\": 1,\n        \"last_page_url\": \"http://127.0.0.1:8000/api/tasks?page=1\",\n        \"links\": [\n            {\n                \"url\": null,\n                \"label\": \"&laquo; Previous\",\n                \"page\": null,\n                \"active\": false\n            },\n            {\n                \"url\": \"http://127.0.0.1:8000/api/tasks?page=1\",\n                \"label\": \"1\",\n                \"page\": 1,\n                \"active\": true\n            },\n            {\n                \"url\": null,\n                \"label\": \"Next &raquo;\",\n                \"page\": null,\n                \"active\": false\n            }\n        ],\n        \"next_page_url\": null,\n        \"path\": \"http://127.0.0.1:8000/api/tasks\",\n        \"per_page\": 10,\n        \"prev_page_url\": null,\n        \"to\": 1,\n        \"total\": 1\n    },\n    \"errors\": null\n}"
+						},
+						{
+							"name": "All Tasks (user)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/tasks",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"tasks"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "pending",
+											"disabled": true
+										},
+										{
+											"key": "due_date_from",
+											"value": "2025-09-20",
+											"disabled": true
+										},
+										{
+											"key": "due_date_to",
+											"value": "2025-09-26",
+											"disabled": true
+										},
+										{
+											"key": "assigned_to",
+											"value": "3",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 20 Sep 2025 20:46:32 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"status_code\": 200,\n    \"message\": \"Tasks retrieved successfully\",\n    \"data\": {\n        \"current_page\": 1,\n        \"data\": [\n            {\n                \"id\": 4,\n                \"title\": \"Expedita non rem quibusdam enim nobis non amet.\",\n                \"description\": \"Recusandae corrupti laboriosam perspiciatis quo voluptatum dolorum. Maiores est doloremque consequatur id modi. Ea occaecati minima vero nihil.\",\n                \"status\": \"pending\",\n                \"due_date\": \"2025-10-01\",\n                \"assigned_to\": 2,\n                \"created_by\": 1,\n                \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"assigned_user\": {\n                    \"id\": 2,\n                    \"name\": \"User One\",\n                    \"email\": \"user@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:12.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:12.000000Z\"\n                },\n                \"creator\": {\n                    \"id\": 1,\n                    \"name\": \"Manager One\",\n                    \"email\": \"manager@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:12.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:12.000000Z\"\n                },\n                \"dependencies\": [],\n                \"dependents\": [\n                    {\n                        \"id\": 2,\n                        \"title\": \"updated Task Title\",\n                        \"description\": \"Updated desc\",\n                        \"status\": \"in_progress\",\n                        \"due_date\": \"2025-09-30\",\n                        \"assigned_to\": 3,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T20:40:13.000000Z\",\n                        \"pivot\": {\n                            \"dependency_task_id\": 4,\n                            \"task_id\": 2\n                        }\n                    }\n                ]\n            },\n            {\n                \"id\": 6,\n                \"title\": \"Id ea earum aut occaecati autem commodi explicabo.\",\n                \"description\": \"Dolorem aut sunt et necessitatibus expedita voluptatem laboriosam. Saepe qui aut et repellat non officiis amet. Rerum voluptas quam eum hic. Voluptatem repudiandae excepturi architecto odio ab qui. Quia adipisci et illum sit natus eligendi pariatur.\",\n                \"status\": \"pending\",\n                \"due_date\": \"2025-10-15\",\n                \"assigned_to\": 2,\n                \"created_by\": 1,\n                \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"assigned_user\": {\n                    \"id\": 2,\n                    \"name\": \"User One\",\n                    \"email\": \"user@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:12.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:12.000000Z\"\n                },\n                \"creator\": {\n                    \"id\": 1,\n                    \"name\": \"Manager One\",\n                    \"email\": \"manager@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:12.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:12.000000Z\"\n                },\n                \"dependencies\": [\n                    {\n                        \"id\": 10,\n                        \"title\": \"Excepturi repellendus quos illum ullam.\",\n                        \"description\": \"Qui vel aut qui ut commodi vero numquam. Magnam quis architecto minima vel dolore temporibus odit adipisci. In accusantium non sint error voluptatum accusantium.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-10-08\",\n                        \"assigned_to\": 2,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"task_id\": 6,\n                            \"dependency_task_id\": 10\n                        }\n                    }\n                ],\n                \"dependents\": [\n                    {\n                        \"id\": 2,\n                        \"title\": \"updated Task Title\",\n                        \"description\": \"Updated desc\",\n                        \"status\": \"in_progress\",\n                        \"due_date\": \"2025-09-30\",\n                        \"assigned_to\": 3,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T20:40:13.000000Z\",\n                        \"pivot\": {\n                            \"dependency_task_id\": 6,\n                            \"task_id\": 2\n                        }\n                    }\n                ]\n            },\n            {\n                \"id\": 10,\n                \"title\": \"Excepturi repellendus quos illum ullam.\",\n                \"description\": \"Qui vel aut qui ut commodi vero numquam. Magnam quis architecto minima vel dolore temporibus odit adipisci. In accusantium non sint error voluptatum accusantium.\",\n                \"status\": \"pending\",\n                \"due_date\": \"2025-10-08\",\n                \"assigned_to\": 2,\n                \"created_by\": 1,\n                \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"assigned_user\": {\n                    \"id\": 2,\n                    \"name\": \"User One\",\n                    \"email\": \"user@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:12.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:12.000000Z\"\n                },\n                \"creator\": {\n                    \"id\": 1,\n                    \"name\": \"Manager One\",\n                    \"email\": \"manager@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:12.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:12.000000Z\"\n                },\n                \"dependencies\": [\n                    {\n                        \"id\": 7,\n                        \"title\": \"Esse qui nostrum necessitatibus quam culpa placeat ut.\",\n                        \"description\": \"Repellendus et adipisci sit eius qui. Quo necessitatibus eius illum hic ea impedit ea. Inventore vitae et et ipsa sint. Magni in aut quia ut.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-09-26\",\n                        \"assigned_to\": 3,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"task_id\": 10,\n                            \"dependency_task_id\": 7\n                        }\n                    }\n                ],\n                \"dependents\": [\n                    {\n                        \"id\": 3,\n                        \"title\": \"Veritatis odit ratione sint labore.\",\n                        \"description\": \"Voluptatem nisi est sequi placeat corporis. Iusto minima commodi nihil est nesciunt. Sint in quia maxime non architecto. Saepe quia quis repudiandae ratione mollitia qui natus. Quibusdam laborum vel ea ut qui sed eum.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-10-10\",\n                        \"assigned_to\": 3,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"dependency_task_id\": 10,\n                            \"task_id\": 3\n                        }\n                    },\n                    {\n                        \"id\": 6,\n                        \"title\": \"Id ea earum aut occaecati autem commodi explicabo.\",\n                        \"description\": \"Dolorem aut sunt et necessitatibus expedita voluptatem laboriosam. Saepe qui aut et repellat non officiis amet. Rerum voluptas quam eum hic. Voluptatem repudiandae excepturi architecto odio ab qui. Quia adipisci et illum sit natus eligendi pariatur.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-10-15\",\n                        \"assigned_to\": 2,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"dependency_task_id\": 10,\n                            \"task_id\": 6\n                        }\n                    }\n                ]\n            },\n            {\n                \"id\": 11,\n                \"title\": \"New Task\",\n                \"description\": \"Task description\",\n                \"status\": \"pending\",\n                \"due_date\": \"2025-09-25\",\n                \"assigned_to\": 2,\n                \"created_by\": 1,\n                \"created_at\": \"2025-09-20T20:39:05.000000Z\",\n                \"updated_at\": \"2025-09-20T20:39:05.000000Z\",\n                \"assigned_user\": {\n                    \"id\": 2,\n                    \"name\": \"User One\",\n                    \"email\": \"user@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:12.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:12.000000Z\"\n                },\n                \"creator\": {\n                    \"id\": 1,\n                    \"name\": \"Manager One\",\n                    \"email\": \"manager@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:12.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:12.000000Z\"\n                },\n                \"dependencies\": [],\n                \"dependents\": []\n            }\n        ],\n        \"first_page_url\": \"http://127.0.0.1:8000/api/tasks?page=1\",\n        \"from\": 1,\n        \"last_page\": 1,\n        \"last_page_url\": \"http://127.0.0.1:8000/api/tasks?page=1\",\n        \"links\": [\n            {\n                \"url\": null,\n                \"label\": \"&laquo; Previous\",\n                \"page\": null,\n                \"active\": false\n            },\n            {\n                \"url\": \"http://127.0.0.1:8000/api/tasks?page=1\",\n                \"label\": \"1\",\n                \"page\": 1,\n                \"active\": true\n            },\n            {\n                \"url\": null,\n                \"label\": \"Next &raquo;\",\n                \"page\": null,\n                \"active\": false\n            }\n        ],\n        \"next_page_url\": null,\n        \"path\": \"http://127.0.0.1:8000/api/tasks\",\n        \"per_page\": 10,\n        \"prev_page_url\": null,\n        \"to\": 4,\n        \"total\": 4\n    },\n    \"errors\": null\n}"
+						},
+						{
+							"name": "Filter by status (user)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/tasks?status=in_progress",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"tasks"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "in_progress"
+										},
+										{
+											"key": "due_date_from",
+											"value": "2025-09-20",
+											"disabled": true
+										},
+										{
+											"key": "due_date_to",
+											"value": "2025-09-26",
+											"disabled": true
+										},
+										{
+											"key": "assigned_to",
+											"value": "3",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 20 Sep 2025 20:50:33 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"status_code\": 200,\n    \"message\": \"Tasks retrieved successfully\",\n    \"data\": {\n        \"current_page\": 1,\n        \"data\": [\n            {\n                \"id\": 6,\n                \"title\": \"Id ea earum aut occaecati autem commodi explicabo.\",\n                \"description\": \"Dolorem aut sunt et necessitatibus expedita voluptatem laboriosam. Saepe qui aut et repellat non officiis amet. Rerum voluptas quam eum hic. Voluptatem repudiandae excepturi architecto odio ab qui. Quia adipisci et illum sit natus eligendi pariatur.\",\n                \"status\": \"in_progress\",\n                \"due_date\": \"2025-10-15\",\n                \"assigned_to\": 2,\n                \"created_by\": 1,\n                \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"assigned_user\": {\n                    \"id\": 2,\n                    \"name\": \"User One\",\n                    \"email\": \"user@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:12.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:12.000000Z\"\n                },\n                \"creator\": {\n                    \"id\": 1,\n                    \"name\": \"Manager One\",\n                    \"email\": \"manager@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:12.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:12.000000Z\"\n                },\n                \"dependencies\": [\n                    {\n                        \"id\": 10,\n                        \"title\": \"Excepturi repellendus quos illum ullam.\",\n                        \"description\": \"Qui vel aut qui ut commodi vero numquam. Magnam quis architecto minima vel dolore temporibus odit adipisci. In accusantium non sint error voluptatum accusantium.\",\n                        \"status\": \"pending\",\n                        \"due_date\": \"2025-10-08\",\n                        \"assigned_to\": 2,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"pivot\": {\n                            \"task_id\": 6,\n                            \"dependency_task_id\": 10\n                        }\n                    }\n                ],\n                \"dependents\": [\n                    {\n                        \"id\": 2,\n                        \"title\": \"updated Task Title\",\n                        \"description\": \"Updated desc\",\n                        \"status\": \"in_progress\",\n                        \"due_date\": \"2025-09-30\",\n                        \"assigned_to\": 3,\n                        \"created_by\": 1,\n                        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                        \"updated_at\": \"2025-09-20T20:40:13.000000Z\",\n                        \"pivot\": {\n                            \"dependency_task_id\": 6,\n                            \"task_id\": 2\n                        }\n                    }\n                ]\n            }\n        ],\n        \"first_page_url\": \"http://127.0.0.1:8000/api/tasks?page=1\",\n        \"from\": 1,\n        \"last_page\": 1,\n        \"last_page_url\": \"http://127.0.0.1:8000/api/tasks?page=1\",\n        \"links\": [\n            {\n                \"url\": null,\n                \"label\": \"&laquo; Previous\",\n                \"page\": null,\n                \"active\": false\n            },\n            {\n                \"url\": \"http://127.0.0.1:8000/api/tasks?page=1\",\n                \"label\": \"1\",\n                \"page\": 1,\n                \"active\": true\n            },\n            {\n                \"url\": null,\n                \"label\": \"Next &raquo;\",\n                \"page\": null,\n                \"active\": false\n            }\n        ],\n        \"next_page_url\": null,\n        \"path\": \"http://127.0.0.1:8000/api/tasks\",\n        \"per_page\": 10,\n        \"prev_page_url\": null,\n        \"to\": 1,\n        \"total\": 1\n    },\n    \"errors\": null\n}"
+						},
+						{
+							"name": "Filter by due date range (user)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/tasks?due_date_from=2025-09-20&due_date_to=2025-09-26",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"tasks"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "in_progress",
+											"disabled": true
+										},
+										{
+											"key": "due_date_from",
+											"value": "2025-09-20"
+										},
+										{
+											"key": "due_date_to",
+											"value": "2025-09-26"
+										},
+										{
+											"key": "assigned_to",
+											"value": "3",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 20 Sep 2025 20:52:12 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"status_code\": 200,\n    \"message\": \"Tasks retrieved successfully\",\n    \"data\": {\n        \"current_page\": 1,\n        \"data\": [\n            {\n                \"id\": 11,\n                \"title\": \"New Task\",\n                \"description\": \"Task description\",\n                \"status\": \"pending\",\n                \"due_date\": \"2025-09-25\",\n                \"assigned_to\": 2,\n                \"created_by\": 1,\n                \"created_at\": \"2025-09-20T20:39:05.000000Z\",\n                \"updated_at\": \"2025-09-20T20:39:05.000000Z\",\n                \"assigned_user\": {\n                    \"id\": 2,\n                    \"name\": \"User One\",\n                    \"email\": \"user@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:12.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:12.000000Z\"\n                },\n                \"creator\": {\n                    \"id\": 1,\n                    \"name\": \"Manager One\",\n                    \"email\": \"manager@example.com\",\n                    \"email_verified_at\": null,\n                    \"created_at\": \"2025-09-20T13:01:12.000000Z\",\n                    \"updated_at\": \"2025-09-20T13:01:12.000000Z\"\n                },\n                \"dependencies\": [],\n                \"dependents\": []\n            }\n        ],\n        \"first_page_url\": \"http://127.0.0.1:8000/api/tasks?page=1\",\n        \"from\": 1,\n        \"last_page\": 1,\n        \"last_page_url\": \"http://127.0.0.1:8000/api/tasks?page=1\",\n        \"links\": [\n            {\n                \"url\": null,\n                \"label\": \"&laquo; Previous\",\n                \"page\": null,\n                \"active\": false\n            },\n            {\n                \"url\": \"http://127.0.0.1:8000/api/tasks?page=1\",\n                \"label\": \"1\",\n                \"page\": 1,\n                \"active\": true\n            },\n            {\n                \"url\": null,\n                \"label\": \"Next &raquo;\",\n                \"page\": null,\n                \"active\": false\n            }\n        ],\n        \"next_page_url\": null,\n        \"path\": \"http://127.0.0.1:8000/api/tasks\",\n        \"per_page\": 10,\n        \"prev_page_url\": null,\n        \"to\": 1,\n        \"total\": 1\n    },\n    \"errors\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Task",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/tasks/3",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"tasks",
+								"3"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Task (manager)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/tasks/2",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"tasks",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 20 Sep 2025 20:36:02 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"status_code\": 200,\n    \"message\": \"Task details retrieved successfully\",\n    \"data\": {\n        \"id\": 2,\n        \"title\": \"Laboriosam repudiandae autem quasi eos aspernatur aut.\",\n        \"description\": \"Possimus quos aspernatur voluptatem et hic omnis ut nostrum. Aut cupiditate saepe in et. Provident labore iusto quia voluptate aut eveniet.\",\n        \"status\": \"pending\",\n        \"due_date\": \"2025-09-25\",\n        \"assigned_to\": 2,\n        \"created_by\": 1,\n        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n        \"assigned_user\": {\n            \"id\": 2,\n            \"name\": \"User One\",\n            \"email\": \"user@example.com\",\n            \"email_verified_at\": null,\n            \"created_at\": \"2025-09-20T13:01:12.000000Z\",\n            \"updated_at\": \"2025-09-20T13:01:12.000000Z\"\n        },\n        \"creator\": {\n            \"id\": 1,\n            \"name\": \"Manager One\",\n            \"email\": \"manager@example.com\",\n            \"email_verified_at\": null,\n            \"created_at\": \"2025-09-20T13:01:12.000000Z\",\n            \"updated_at\": \"2025-09-20T13:01:12.000000Z\"\n        },\n        \"dependencies\": [\n            {\n                \"id\": 4,\n                \"title\": \"Expedita non rem quibusdam enim nobis non amet.\",\n                \"description\": \"Recusandae corrupti laboriosam perspiciatis quo voluptatum dolorum. Maiores est doloremque consequatur id modi. Ea occaecati minima vero nihil.\",\n                \"status\": \"pending\",\n                \"due_date\": \"2025-10-01\",\n                \"assigned_to\": 2,\n                \"created_by\": 1,\n                \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"pivot\": {\n                    \"task_id\": 2,\n                    \"dependency_task_id\": 4\n                }\n            },\n            {\n                \"id\": 6,\n                \"title\": \"Id ea earum aut occaecati autem commodi explicabo.\",\n                \"description\": \"Dolorem aut sunt et necessitatibus expedita voluptatem laboriosam. Saepe qui aut et repellat non officiis amet. Rerum voluptas quam eum hic. Voluptatem repudiandae excepturi architecto odio ab qui. Quia adipisci et illum sit natus eligendi pariatur.\",\n                \"status\": \"pending\",\n                \"due_date\": \"2025-10-15\",\n                \"assigned_to\": 2,\n                \"created_by\": 1,\n                \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"pivot\": {\n                    \"task_id\": 2,\n                    \"dependency_task_id\": 6\n                }\n            }\n        ],\n        \"dependents\": [\n            {\n                \"id\": 7,\n                \"title\": \"Esse qui nostrum necessitatibus quam culpa placeat ut.\",\n                \"description\": \"Repellendus et adipisci sit eius qui. Quo necessitatibus eius illum hic ea impedit ea. Inventore vitae et et ipsa sint. Magni in aut quia ut.\",\n                \"status\": \"pending\",\n                \"due_date\": \"2025-09-26\",\n                \"assigned_to\": 3,\n                \"created_by\": 1,\n                \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"pivot\": {\n                    \"dependency_task_id\": 2,\n                    \"task_id\": 7\n                }\n            }\n        ]\n    },\n    \"errors\": null\n}"
+						},
+						{
+							"name": "Get Task (assigned to user)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/tasks/4",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"tasks",
+										"4"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 20 Sep 2025 20:55:17 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"status_code\": 200,\n    \"message\": \"Task details retrieved successfully\",\n    \"data\": {\n        \"id\": 4,\n        \"title\": \"Expedita non rem quibusdam enim nobis non amet.\",\n        \"description\": \"Recusandae corrupti laboriosam perspiciatis quo voluptatum dolorum. Maiores est doloremque consequatur id modi. Ea occaecati minima vero nihil.\",\n        \"status\": \"pending\",\n        \"due_date\": \"2025-10-01\",\n        \"assigned_to\": 2,\n        \"created_by\": 1,\n        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n        \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n        \"assigned_user\": {\n            \"id\": 2,\n            \"name\": \"User One\",\n            \"email\": \"user@example.com\",\n            \"email_verified_at\": null,\n            \"created_at\": \"2025-09-20T13:01:12.000000Z\",\n            \"updated_at\": \"2025-09-20T13:01:12.000000Z\"\n        },\n        \"creator\": {\n            \"id\": 1,\n            \"name\": \"Manager One\",\n            \"email\": \"manager@example.com\",\n            \"email_verified_at\": null,\n            \"created_at\": \"2025-09-20T13:01:12.000000Z\",\n            \"updated_at\": \"2025-09-20T13:01:12.000000Z\"\n        },\n        \"dependencies\": [],\n        \"dependents\": [\n            {\n                \"id\": 2,\n                \"title\": \"updated Task Title\",\n                \"description\": \"Updated desc\",\n                \"status\": \"in_progress\",\n                \"due_date\": \"2025-09-30\",\n                \"assigned_to\": 3,\n                \"created_by\": 1,\n                \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"updated_at\": \"2025-09-20T20:40:13.000000Z\",\n                \"pivot\": {\n                    \"dependency_task_id\": 4,\n                    \"task_id\": 2\n                }\n            }\n        ]\n    },\n    \"errors\": null\n}"
+						},
+						{
+							"name": "Get Task (not assigned to user)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/tasks/3",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"tasks",
+										"3"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 20 Sep 2025 21:45:11 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"status_code\": 403,\n    \"message\": \"This action is unauthorized.\",\n    \"data\": null,\n    \"errors\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "Assign Task",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user_id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/tasks/1/assign",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"tasks",
+								"1",
+								"assign"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Assign Task",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "user_id",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/tasks/1/assign",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"tasks",
+										"1",
+										"assign"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 20 Sep 2025 20:36:52 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"status_code\": 200,\n    \"message\": \"Task assigned successfully\",\n    \"data\": {\n        \"id\": 1,\n        \"title\": \"Vero dolorum alias iste assumenda.\",\n        \"description\": \"Et architecto cumque reprehenderit optio doloribus. Eveniet voluptas nihil molestiae adipisci rerum. Quis quis natus consequuntur qui alias sit ipsa.\",\n        \"status\": \"pending\",\n        \"due_date\": \"2025-10-04\",\n        \"assigned_to\": 1,\n        \"created_by\": 1,\n        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n        \"updated_at\": \"2025-09-20T20:36:52.000000Z\"\n    },\n    \"errors\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Add Dependency",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "dependency_id",
+									"value": "3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/tasks/1/dependencies",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"tasks",
+								"1",
+								"dependencies"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add Dependency",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "dependency_id",
+											"value": "3",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/tasks/1/dependencies",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"tasks",
+										"1",
+										"dependencies"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 20 Sep 2025 20:37:59 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"status_code\": 200,\n    \"message\": \"Dependency added successfully\",\n    \"data\": {\n        \"id\": 1,\n        \"title\": \"Vero dolorum alias iste assumenda.\",\n        \"description\": \"Et architecto cumque reprehenderit optio doloribus. Eveniet voluptas nihil molestiae adipisci rerum. Quis quis natus consequuntur qui alias sit ipsa.\",\n        \"status\": \"pending\",\n        \"due_date\": \"2025-10-04\",\n        \"assigned_to\": 1,\n        \"created_by\": 1,\n        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n        \"updated_at\": \"2025-09-20T20:36:52.000000Z\",\n        \"dependencies\": [\n            {\n                \"id\": 7,\n                \"title\": \"Esse qui nostrum necessitatibus quam culpa placeat ut.\",\n                \"description\": \"Repellendus et adipisci sit eius qui. Quo necessitatibus eius illum hic ea impedit ea. Inventore vitae et et ipsa sint. Magni in aut quia ut.\",\n                \"status\": \"pending\",\n                \"due_date\": \"2025-09-26\",\n                \"assigned_to\": 3,\n                \"created_by\": 1,\n                \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"pivot\": {\n                    \"task_id\": 1,\n                    \"dependency_task_id\": 7\n                }\n            },\n            {\n                \"id\": 3,\n                \"title\": \"Veritatis odit ratione sint labore.\",\n                \"description\": \"Voluptatem nisi est sequi placeat corporis. Iusto minima commodi nihil est nesciunt. Sint in quia maxime non architecto. Saepe quia quis repudiandae ratione mollitia qui natus. Quibusdam laborum vel ea ut qui sed eum.\",\n                \"status\": \"pending\",\n                \"due_date\": \"2025-10-10\",\n                \"assigned_to\": 3,\n                \"created_by\": 1,\n                \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"pivot\": {\n                    \"task_id\": 1,\n                    \"dependency_task_id\": 3\n                }\n            }\n        ],\n        \"dependents\": []\n    },\n    \"errors\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Remove Dependency",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"dependency_id\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/tasks/1/dependencies",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"tasks",
+								"1",
+								"dependencies"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Remove Dependency",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"dependency_id\": 3\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/tasks/1/dependencies",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"tasks",
+										"1",
+										"dependencies"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 20 Sep 2025 20:38:30 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"status_code\": 200,\n    \"message\": \"Dependency removed successfully\",\n    \"data\": {\n        \"id\": 1,\n        \"title\": \"Vero dolorum alias iste assumenda.\",\n        \"description\": \"Et architecto cumque reprehenderit optio doloribus. Eveniet voluptas nihil molestiae adipisci rerum. Quis quis natus consequuntur qui alias sit ipsa.\",\n        \"status\": \"pending\",\n        \"due_date\": \"2025-10-04\",\n        \"assigned_to\": 1,\n        \"created_by\": 1,\n        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n        \"updated_at\": \"2025-09-20T20:36:52.000000Z\",\n        \"dependencies\": [\n            {\n                \"id\": 7,\n                \"title\": \"Esse qui nostrum necessitatibus quam culpa placeat ut.\",\n                \"description\": \"Repellendus et adipisci sit eius qui. Quo necessitatibus eius illum hic ea impedit ea. Inventore vitae et et ipsa sint. Magni in aut quia ut.\",\n                \"status\": \"pending\",\n                \"due_date\": \"2025-09-26\",\n                \"assigned_to\": 3,\n                \"created_by\": 1,\n                \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"updated_at\": \"2025-09-20T13:01:13.000000Z\",\n                \"pivot\": {\n                    \"task_id\": 1,\n                    \"dependency_task_id\": 7\n                }\n            }\n        ],\n        \"dependents\": []\n    },\n    \"errors\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Create Task",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"New Task\",\r\n  \"description\": \"Task description\",\r\n  \"due_date\": \"2025-09-25\",\r\n  \"assigned_to\": 2\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/tasks",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"tasks"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Task",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"title\": \"New Task\",\r\n  \"description\": \"Task description\",\r\n  \"due_date\": \"2025-09-25\",\r\n  \"assigned_to\": 2\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/tasks",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"tasks"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 20 Sep 2025 20:39:06 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"status_code\": 201,\n    \"message\": \"Task created successfully\",\n    \"data\": {\n        \"title\": \"New Task\",\n        \"description\": \"Task description\",\n        \"due_date\": \"2025-09-25\",\n        \"assigned_to\": 2,\n        \"status\": \"pending\",\n        \"created_by\": 1,\n        \"updated_at\": \"2025-09-20T20:39:05.000000Z\",\n        \"created_at\": \"2025-09-20T20:39:05.000000Z\",\n        \"id\": 11\n    },\n    \"errors\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Task",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "// {\r\n//   \"title\": \"updated Task Title\",\r\n//   \"description\": \"Updated desc\",\r\n//   \"status\": \"in_progress\",\r\n//   \"assigned_to\": 3,\r\n//   \"due_date\": \"2025-09-30\"\r\n// }\r\n\r\n{\r\n   \"status\": \"completed\"  \r\n}\r\n\r\n// {\r\n//    \"status\": \"in_progress\"  \r\n// }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/tasks/10",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"tasks",
+								"10"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update Task (manager)",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"title\": \"updated Task Title\",\r\n  \"description\": \"Updated desc\",\r\n  \"status\": \"in_progress\",\r\n  \"assigned_to\": 3,\r\n  \"due_date\": \"2025-09-30\"\r\n}\r\n\r\n// {\r\n//    \"status\": \"completed\"  \r\n// }\r\n\r\n// {\r\n//    \"status\": \"in_progress\"  \r\n// }\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/tasks/2",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"tasks",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 20 Sep 2025 20:40:13 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"status_code\": 200,\n    \"message\": \"Task is now in progress.\",\n    \"data\": {\n        \"id\": 2,\n        \"title\": \"updated Task Title\",\n        \"description\": \"Updated desc\",\n        \"status\": \"in_progress\",\n        \"due_date\": \"2025-09-30\",\n        \"assigned_to\": 3,\n        \"created_by\": 1,\n        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n        \"updated_at\": \"2025-09-20T20:40:13.000000Z\"\n    },\n    \"errors\": null\n}"
+						},
+						{
+							"name": "Update Task (incomplete dependencies->manager)",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "// {\r\n//   \"title\": \"updated Task Title\",\r\n//   \"description\": \"Updated desc\",\r\n//   \"status\": \"in_progress\",\r\n//   \"assigned_to\": 3,\r\n//   \"due_date\": \"2025-09-30\"\r\n// }\r\n\r\n{\r\n   \"status\": \"completed\"  \r\n}\r\n\r\n// {\r\n//    \"status\": \"in_progress\"  \r\n// }\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/tasks/2",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"tasks",
+										"2"
+									]
+								}
+							},
+							"status": "Unprocessable Content",
+							"code": 422,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 20 Sep 2025 20:41:15 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Cannot complete task. Incomplete dependencies: 4, 6\",\n    \"errors\": {\n        \"dependencies\": [\n            \"Cannot complete task. Incomplete dependencies: 4, 6\"\n        ]\n    }\n}"
+						},
+						{
+							"name": "Update status of task assigned to user",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "// {\r\n//   \"title\": \"updated Task Title\",\r\n//   \"description\": \"Updated desc\",\r\n//   \"status\": \"in_progress\",\r\n//   \"assigned_to\": 3,\r\n//   \"due_date\": \"2025-09-30\"\r\n// }\r\n\r\n// {\r\n//    \"status\": \"completed\"  \r\n// }\r\n\r\n{\r\n   \"status\": \"in_progress\"  \r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/tasks/4",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"tasks",
+										"4"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 20 Sep 2025 20:57:17 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"status_code\": 200,\n    \"message\": \"Task is now in progress.\",\n    \"data\": {\n        \"id\": 4,\n        \"title\": \"Expedita non rem quibusdam enim nobis non amet.\",\n        \"description\": \"Recusandae corrupti laboriosam perspiciatis quo voluptatum dolorum. Maiores est doloremque consequatur id modi. Ea occaecati minima vero nihil.\",\n        \"status\": \"in_progress\",\n        \"due_date\": \"2025-10-01\",\n        \"assigned_to\": 2,\n        \"created_by\": 1,\n        \"created_at\": \"2025-09-20T13:01:13.000000Z\",\n        \"updated_at\": \"2025-09-20T20:57:17.000000Z\"\n    },\n    \"errors\": null\n}"
+						},
+						{
+							"name": "Update status (incomplete dependencies->user)",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "// {\r\n//   \"title\": \"updated Task Title\",\r\n//   \"description\": \"Updated desc\",\r\n//   \"status\": \"in_progress\",\r\n//   \"assigned_to\": 3,\r\n//   \"due_date\": \"2025-09-30\"\r\n// }\r\n\r\n{\r\n   \"status\": \"completed\"  \r\n}\r\n\r\n// {\r\n//    \"status\": \"in_progress\"  \r\n// }\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/tasks/10",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"tasks",
+										"10"
+									]
+								}
+							},
+							"status": "Unprocessable Content",
+							"code": 422,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 20 Sep 2025 20:59:18 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Cannot complete task. Incomplete dependencies: 7\",\n    \"errors\": {\n        \"dependencies\": [\n            \"Cannot complete task. Incomplete dependencies: 7\"\n        ]\n    }\n}"
+						},
+						{
+							"name": "Update status of task not assigned to user",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "// {\r\n//   \"title\": \"updated Task Title\",\r\n//   \"description\": \"Updated desc\",\r\n//   \"status\": \"in_progress\",\r\n//   \"assigned_to\": 3,\r\n//   \"due_date\": \"2025-09-30\"\r\n// }\r\n\r\n{\r\n   \"status\": \"completed\"  \r\n}\r\n\r\n// {\r\n//    \"status\": \"in_progress\"  \r\n// }\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/tasks/3",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"tasks",
+										"3"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 20 Sep 2025 22:03:33 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"status_code\": 403,\n    \"message\": \"This action is unauthorized.\",\n    \"data\": null,\n    \"errors\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/users?name=one",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "one"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Users",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/users",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 20 Sep 2025 20:44:26 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"status_code\": 200,\n    \"message\": \"Users retrieved successfully\",\n    \"data\": [\n        {\n            \"id\": 2,\n            \"name\": \"User One\",\n            \"email\": \"user@example.com\"\n        },\n        {\n            \"id\": 3,\n            \"name\": \"User Two\",\n            \"email\": \"user2@example.com\"\n        }\n    ],\n    \"errors\": null\n}"
+						},
+						{
+							"name": "Filter Users by name",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/users?name=one",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"users"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "one"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 20 Sep 2025 20:45:11 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"status_code\": 200,\n    \"message\": \"Users retrieved successfully\",\n    \"data\": [\n        {\n            \"id\": 2,\n            \"name\": \"User One\",\n            \"email\": \"user@example.com\"\n        }\n    ],\n    \"errors\": null\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
